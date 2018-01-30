@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   title = 'Super cloudpharma accueil';
+
   constructor(private router:Router){}
+
   connection(){
     this.router.navigate(['/vente']);
   }
+  
 }

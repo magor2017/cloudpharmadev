@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CaissierComponent } from './caissier/caissier.component';
 import { VenteComponent } from './caissier/vente/vente.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { MenusComponent } from './menus/menus.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     CaissierComponent,
     VenteComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    MenusComponent
   ],
   imports: [
     BrowserModule,

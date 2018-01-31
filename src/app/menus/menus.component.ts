@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 
 @Component({
   selector: 'app-menus',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menus.component.css']
 })
 export class MenusComponent implements OnInit {
+ 
+  @Input() dashboard:boolean= false;
+  @Input() vente:boolean= false;
+  @Input() histoire:boolean= false;
+  @Input() profile:boolean= false;
+
 
   constructor() { }
 

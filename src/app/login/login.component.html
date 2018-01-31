@@ -3,16 +3,14 @@
     Welcome to <b>{{ title }}!</b>
   </h1>-->
  <div>
-		<form style="width:40%;position:absolute;left:30%;top:25%" class="form well">
+		<form style="width:30%;position:absolute;left:35%;top:25% ;border: 2px solid green; border-radius:5rem; padding:3rem;" class="form well ">
 				<fieldset>
-						<legend style="text-align:center;color:green;font-size:2em"><b><i>CLOUDPHARMA</i></b></legend>
+						<legend style="text-align:center;color:green;font-size:2em"><img src="./../../assets/login.jpeg" alt="" style="height:5rem; margin-bottom:1rem;"></legend>
 						<div class="form-group">
-								<label>identifiant :</label>
-								<input type="text" class="form-control" />
+								<input type="text" class="form-control" placeholder="identifiant"/>
 						</div>
 						<div class="form-group">
-								<label>password :</label>
-								<input type="password" class="form-control" />
+								<input type="password" class="form-control" placeholder="mot de passe"/>
 						</div>
 						<input type="button" [routerLink]="['/caissier']" value="valider" class="btn btn-success" />
 				</fieldset>

@@ -3,7 +3,7 @@ import  { RouterModule, Routes} from '@angular/router' ;
 
 
 import { CaissierComponent } from './caissier/caissier.component';
-import { VenteComponent } from './caissier/vente/vente.component';
+import { VenteComponent } from './vente/vente.component';
 import {AppComponent} from './app.component';
 import { LoginComponent } from './login/login.component';
 

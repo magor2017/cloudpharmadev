@@ -2,21 +2,13 @@
   <!--<h1 style="text-align:center;">
     Welcome to <b>{{ title }}!</b>
   </h1>-->
-  <div class="row" style="background-color:green;text-align:center;margin-bottom:5px">
-	    <b class="col-lg-12 col-md-12 col-sm-12"><i style="color:white;font-size:2em;">CLOUDPHARMA</i></b>
-  </div>
   <div>
 				<p style="color:green;text-align:center;font-size:1.5em">caissier : rasta <button class="btn btn-danger" [routerLink]="['/login']">se deconnecter</button></p>
 				
-			</div>
+	</div>
   <div class="row">
 		<div class="col-lg-3" >
-		   <ul class="list-group " id="uli">
-			 <li class="list-item" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center;border:2px solid white;"><a style="color:white;" ><b><i>DASHBOARD</i></b></a></li>
-			 <li class="list-item" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center;border:2px solid white"><a style="color:white;" [routerLink]="['/caissier','vente']"><b><i>VENTE</i></b></a></li>
-			 <li class="list-item" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center"><a style="color:white;"><b><i>HISTORIQUE</i></b></a></li>
-			 <li class="list-item" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center"><a style="color:white;"><b><i>PROFIL</i></b></a></li>
-		   </ul> 
+        <app-menus [dashboard]="true" [vente]="true" [histoire]="true" [profile]="true"></app-menus>
 		</div>
 		<div class="col-lg-8">
 			 <router-outlet></router-outlet>

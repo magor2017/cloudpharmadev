@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    margin:0px !important;
+    padding: 0px !important;
+    width: 100% !important;
+}
+
+body:after {
+    content: "CLOUD PHARMA" !important;
+    position: absolute !important;
+    top: 30% !important;
+    left: 20% !important;
+    z-index: -1 !important;
+    color: rgba(0, 128, 0, 0.171) !important;
+    transform: rotate(-30deg) !important;
+    -moz-transform: rotate(-30deg) !important;
+    -webkit-transform: rotate(-30deg) !important;
+    -khtml-transform: rotate(-30deg) !important;
+    font-size: 7rem;
+
+  }

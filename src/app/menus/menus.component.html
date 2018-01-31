@@ -1,3 +1,6 @@
-<p>
-  menus works!
-</p>
+<ul class="list-group " id="uli">
+    <li class="list-item" *ngIf="this.dashboard==true" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center;border:2px solid white;"><a style="color:white;" ><b><i>DASHBOARD</i></b></a></li>
+    <li class="list-item" *ngIf="this.vente==true" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center;border:2px solid white"><a style="color:white;" [routerLink]="['/caissier','vente']"><b><i>VENTE</i></b></a></li>
+    <li class="list-item" *ngIf="this.histoire==true" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center"><a style="color:white;"><b><i>HISTORIQUE</i></b></a></li>
+    <li class="list-item" *ngIf="this.profile==true" style="border:2px solid white;background-color:green;border-radius:20px;text-align:center"><a style="color:white;"><span class="glyphicon glyphicon-user"></span><b><i>PROFIL</i></b></a></li>
+</ul> 

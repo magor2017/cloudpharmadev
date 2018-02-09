@@ -2,19 +2,26 @@
   <!--<h1 style="text-align:center;">
     Welcome to <b>{{ title }}!</b>
   </h1>-->
- <div>
-		<form style="width:30%;position:absolute;left:35%;top:25% ;border: 2px solid green; border-radius:5rem; padding:3rem;" class="form well ">
-				<fieldset>
-						<legend style="text-align:center;color:green;font-size:2em"><img src="./../../assets/login.jpeg" alt="" style="height:5rem; margin-bottom:1rem;"></legend>
-						<div class="form-group">
-								<input type="text" class="form-control" placeholder="identifiant"/>
-						</div>
-						<div class="form-group">
-								<input type="password" class="form-control" placeholder="mot de passe"/>
-						</div>
-						<input type="button" [routerLink]="['/caissier']" value="valider" class="btn btn-success" />
-				</fieldset>
-		</form>
+ <div class="container" style="margin-top:8rem;">
+		<div class="row">
+			  <div class="col-lg-3 col-md-3 col-sm-3"></div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+						<form style="border: 2px solid green; border-radius:8rem; padding:3rem;" class="form well ">
+								<fieldset>
+										<legend style="text-align:center;color:green;font-size:2em"><img src="./../../assets/login.jpeg" alt="" style="height:5rem; margin-bottom:1rem;"></legend>
+										<div class="form-group">
+												<input type="text" class="form-control" placeholder="identifiant"/>
+										</div>
+										<div class="form-group">
+												<input type="password" class="form-control" placeholder="mot de passe"/>
+										</div>
+										<input type="button" [routerLink]="['/caissier']" value="valider" class="btn btn-success" style="border-radius:2rem; float:right;" />
+								</fieldset>
+						</form>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3"></div>
+		</div>
  </div>
- 
+
+<router-outlet></router-outlet>
 

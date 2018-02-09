@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 /*********************************************************************************
+ *             Modules
+ ***********************************************************************************/
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import {NgPipesModule} from 'ngx-pipes';
+import { ModalModule } from 'ngx-bootstrap/modal';
+/*********************************************************************************
  *             Components
  ***********************************************************************************/
 import { Routing } from './app.routing'
@@ -12,11 +18,11 @@ import { VenteComponent } from './vente/vente.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { MenusComponent } from './menus/menus.component';
-
-/*********************************************************************************
- *             Modules
- ***********************************************************************************/
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HistoireComponent } from './histoire/histoire.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfilComponent } from './profil/profil.component';
+import { IpmComponent } from './vente/ipm/ipm.component';
+import { AnnulationComponent } from './vente/annulation/annulation.component';
 
 /*********************************************************************************
  *           services
@@ -29,12 +35,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     VenteComponent,
     LoginComponent,
     HeaderComponent,
-    MenusComponent
+    MenusComponent,
+    HistoireComponent,
+    DashboardComponent,
+    ProfilComponent,
+    IpmComponent,
+    AnnulationComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
-    Routing
+    Ng2SmartTableModule,
+    Routing,
+    NgPipesModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

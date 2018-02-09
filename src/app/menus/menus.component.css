@@ -1,11 +1,35 @@
-a:hover{
-    cursor: pointer;
-    background-color:white;
+li:hover{
+    cursor: pointer !important;
+    background-color:white !important;
     color:green !important;
-    width:100% !important;
-    display:block;
-    border:2px solid green;
-    border-radius:20px;
-    height:50px;
-    padding-top:10px;
+    border:2px solid green !important;
+    border-radius:5rem !important;
+  }
+
+  li:hover a{
+
+    color:green !important;
+  }
+
+  ul li{
+    text-decoration: none;
+    list-style-type: none;
+    border:2px solid white;
+    background-color:green;
+    border-radius:5rem;
+    border:2px solid white;
+    cursor: pointer;
+    padding: 1rem;
+  }
+
+  ul li > i{
+      color:  yellow;
+      font-size: 2rem;
+      margin-left: 3rem;
+      margin-right: 2rem;
+  }
+
+  ul li a{
+     color: white;
+     margin-bottom: 20px;
   }

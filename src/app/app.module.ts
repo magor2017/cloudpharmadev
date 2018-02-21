@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {NgPipesModule} from 'ngx-pipes';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 /*********************************************************************************
  *             Components
  ***********************************************************************************/
@@ -22,7 +23,11 @@ import { HistoireComponent } from './histoire/histoire.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilComponent } from './profil/profil.component';
 import { IpmComponent } from './vente/ipm/ipm.component';
+import { DirecteComponent } from './vente/directe/directe.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
+import { AssuranceComponent } from './vente/assurance/assurance.component';
+import { BonComponent } from './vente/bon/bon.component';
+
 
 /*********************************************************************************
  *           services
@@ -40,14 +45,18 @@ import { AnnulationComponent } from './vente/annulation/annulation.component';
     DashboardComponent,
     ProfilComponent,
     IpmComponent,
-    AnnulationComponent
+    AnnulationComponent,
+    DirecteComponent,
+    AssuranceComponent,
+    BonComponent
   ],
   imports: [
     BrowserModule,
     Ng2SmartTableModule,
     Routing,
     NgPipesModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

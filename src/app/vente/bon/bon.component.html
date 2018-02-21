@@ -63,15 +63,14 @@
                          <button class="btn btn-danger btn-sm" (click)="openModal(template,bodyTable)" style="width:100%;">Valider</button>
                          <ng-template #template>
                             <div class="modal-header">
-                              <h4 class="modal-title pull-left">Facture</h4>
+                              <h4 class="modal-title pull-left">Modal</h4>
                               <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
-                               
+                               <h1>Facture</h1>
                                <div class="row" *ngFor="let vm of ventesMedocs">
-                                    
                                     <div class="col-lg-9">
                                          {{vm.medicament}}  ( {{vm.quantite}} )
                                     </div>

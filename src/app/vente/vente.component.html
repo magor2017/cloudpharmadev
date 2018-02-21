@@ -12,9 +12,10 @@
                   <div class="col-lg-10">
                      <!-- Menu de la section vente -->
                       <div class="row" style="margin-left:200px">
-                          <button  [routerLink]="['/vente']" class="btn col-lg-2 " style="margin-right:10px;border:1px solid  green; ;background-color:white; color:green;">Vente</button>
-                          <button  [routerLink]="['/ipm']" class="btn btn-success col-lg-2" style="margin-right:10px">IPM</button>
-                          <button  [routerLink]="['/annulation']" class="btn btn-success col-lg-2" style="margin-right:10px">Annulation</button>
+                          <button (click)="changeOnglet('directe')" class="btn col-lg-2 btn-sm" style="margin-right:10px;border:1px solid  green; ;background-color:white; color:green;">Vente</button>
+                          <button (click)="changeOnglet('ipm')" class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">IPM</button>
+                          <button (click)="changeOnglet('bon')" class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">Bon</button>
+                          <button  (click)="changeOnglet('annulation')" class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">Annulation</button>
                       </div> 
                   </div>
                   <div class="col-lg-1">
@@ -26,102 +27,10 @@
                       <app-menus [dashboard]="true" [vente]="true" [histoire]="true" [profile]="true"></app-menus>
                   </div>
                   <div class="col-lg-9">
-                        <div class="row" style="margin-top:3rem; margin-bottom:3rem;">
-                                <div class="input-group input-group-sm sort">
-                                        <input type="text" class="form-control input-sm" placeholder="rechercher médicament..." (keyup)="changerecherche($event)">
-                                        <span class="input-group-btn">
-                                              <button class="btn btn-secondary btn-sm" type="button">Go!</button>
-                                        </span>
-                                </div>
-                                <div class="row" style="margin-top:0px;" *ngIf="rechercheMedoc == true">
-                                    <ul style="position:absolute; background-color:blue;" class="col-lg-11">
-                                        <li  *ngFor="let medoc of  medicamentsSave | filterBy: ['medicament']: changerMotif " ><a (click)="nouveauMedoc($event)" id=' "medicament": "{{ medoc.medicament }}" ,"prix": "{{ medoc.prix }}"  , "quantite" : "{{ medoc.quantite }}" ,"modePayement" : "{{ medoc.modePayement }}", "assurance": "{{ medoc.assurance }}", "type": "{{ medoc.type }}" '>{{ medoc.medicament }}</a></li>
-                                    </ul>
-                               </div>
-                        </div>
-                        
-                        <div class="row">
-                                <table class="table table-bordered table-sm">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Medicament</th>
-                                            <th>Prix</th>
-                                            <th>Quantite</th>
-                                            <th>Type</th>
-                                            <th>Mode Payement (*)</th>
-                                            <th>Assurance (*)</th>
-                                            <th>supprimer</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody #bodyTable>
-                                           
-                                                <tr *ngFor="let medoc of medicaments">
-                                                    <th scope="row" id="num" class="{{ medoc.id}}">{{ medoc.id}}</th>
-                                                    <td id="medicament" class="{{ medoc.medicament}}">{{ medoc.medicament}}</td>
-                                                    <td id="prix" class="{{ medoc.prix}}">{{ medoc.prix}}</td>
-                                                    <td>
-                                                        <input id="quantite" type="number" class="input-sm" placeholder="quantité" style="width:6rem;" (keyup)="calculePrixTotale($event)" >
-                                                    </td>
-                                                    <td>
-                                                        <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente">
-                                                            <option>directe</option>
-                                                            <option>Bon</option>
-                                                            <option>IPM</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="btn btn-sm" id="sel1" style="font-size:small;" id="modePayement">
-                                                            <option>Payement Cache</option>
-                                                            <option>Check</option>>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                            <select class="btn btn-sm" id="sel1" style="font-size:small;" id="assurance">
-                                                                    <option>adama goudiaby</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                            </select>
-                                                    </td>
-                                                    <td style="text-align:center;"><a href="#" (click)="supprimerMedoc($event)">supprimer</a></td>
-                                                </tr>
-                                               
-                                        </tbody>
-                                        <thead>
-                                            <tr>
-                                                <th colspan="6"> 
-                                                   
-                                                </th>
-                                                <th colspan="2">
-                                                     <button class="btn btn-danger btn-sm" (click)="openModal(template,bodyTable)" style="width:100%;">Valider</button>
-                                                     <ng-template #template>
-                                                        <div class="modal-header">
-                                                          <h4 class="modal-title pull-left">Modal</h4>
-                                                          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                           <h1>Facture</h1>
-                                                           <div class="row" *ngFor="let vm of ventesMedocs">
-                                                                <div class="col-lg-8">
-                                                                     {{vm.medicament}}
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    {{vm.prixTotal}}
-                                                                </div>
-                                                           </div>
-                                                           <button class="btn btn-warning btn-sm" >Imprimer</button>
-                                                           <button class="btn btn-primary btn-sm" >sauver</button>
-                                                        </div>
-                                                      </ng-template>
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                    </table>
-                        </div>
-                        
+                       <app-directe *ngIf="onglet == 'directe'"></app-directe>
+                       <app-ipm *ngIf="onglet == 'ipm'"></app-ipm>
+                       <app-bon *ngIf="onglet == 'bon'"></app-bon>
+                       <app-annulation *ngIf="onglet == 'annulation'"></app-annulation>
                   </div>
               </div>
          </div>

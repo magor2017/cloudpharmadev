@@ -1,5 +1,4 @@
 import { Component, OnInit , TemplateRef} from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router } from '@angular/router';
@@ -8,21 +7,18 @@ import { parse } from 'url';
 import {NgPipesModule} from 'ngx-pipes';
 
 @Component({
-  selector: 'app-ipm',
-  templateUrl: './ipm.component.html',
-  styleUrls: ['./ipm.component.css']
+  selector: 'app-directe',
+  templateUrl: './directe.component.html',
+  styleUrls: ['./directe.component.css']
 })
-export class IpmComponent implements OnInit {
-
-  matricule:string;
-  nom:string;
-  prenom:string;
+export class DirecteComponent implements OnInit {
   ventesMedocs = [];
   prixTotale   = 0;
   rechercheMedoc    = false; 
   modalRef: BsModalRef;
 
   changerMotif = null;
+
   medicamentsSave  = [
     {id:1,medicament:'HELICOCIN 750/500MG CP B/42',prix:"5532",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:2,medicament:'FLOXAPEN GELU 500MG B20',prix:"3925",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
@@ -42,19 +38,25 @@ export class IpmComponent implements OnInit {
   toutValider(bodyTable){
     let 
     prix,
+    type,
     prixT,
     quantite,
+    assurance,
     medicament,
-    codeClient;
+    codeClient,
+    modePayement;
         
     let trs = bodyTable.querySelectorAll('tr');
     for(let tr of trs){
         prix = (tr.querySelector('#prix')).className;
+        type =  (tr.querySelector('#typeVente')).value;
         quantite =  (tr.querySelector('#quantite')).value;
+        assurance =  (tr.querySelector('#assurance')).value;
         medicament =   (tr.querySelector('#medicament')).className;
+        modePayement =  (tr.querySelector('#modePayement')).value;
         
         prixT = JSON.parse(prix) * JSON.parse(quantite);
-        this.ventesMedocs.push({medicament:medicament ,prix:prix  , quantite :quantite,prixTotal:  prixT});
+        this.ventesMedocs.push({medicament:medicament ,prix:prix  , quantite :quantite ,modePayement : modePayement, assurance:assurance , type:type,prixTotal:  prixT});
        
        this.prixTotale += prixT;
     }
@@ -99,5 +101,11 @@ nouveauMedoc(event){
      return false;
 }
 
+// calculePrixTotale (event){
+//      let target = event.target;
+//      let q = target.value;
+//      let prix = parseInt((target.parentElement.parentElement).querySelector('#prix').className);
+//      this.prixTotale += prix*q;
+// }
 
 }

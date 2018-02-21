@@ -1,21 +1,3 @@
-<div class="row">
-    <form action="">
-         <fieldset>
-               <legend>Client</legend>
-               <div class="input-group">
-                     <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente" >
-                       <option>1</option>
-                       <option>2</option>
-                       <option>3sssss</option>
-                     </select>
-                     <input class="input-sm" type="text" name="" id="matricule" placeholder="metricule" style="margin-left:1rem;" [(ngModel)]="matricule">
-                     <input class="input-sm" type="text" name="" id="nom" placeholder="Nom" style="margin-left:1rem;" [(ngModel)]="nom">
-                     <input class="input-sm" type="text" name="" id="prenom" placeholder="prenom" style="margin-left:1rem;" [(ngModel)]="prenom">     
-               </div>
-         </fieldset>
-    </form>
-</div>
-
 <div class="row" style="margin-top:3rem; margin-bottom:3rem;">
     <div class="input-group input-group-sm sort">
             <input type="text" class="form-control input-sm" placeholder="rechercher médicament..." (keyup)="changerecherche($event)">
@@ -38,6 +20,9 @@
                 <th>Medicament</th>
                 <th>Prix</th>
                 <th>Quantite</th>
+                <th>Type</th>
+                <th>Mode Payement (*)</th>
+                <th>Assurance (*)</th>
                 <th>supprimer</th>
             </tr>
             </thead>
@@ -50,28 +35,48 @@
                         <td>
                             <input id="quantite" value="0" type="number" class="input-sm" placeholder="quantité" style="width:6rem;"  >
                         </td>
+                        <td>
+                            <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente">
+                                <option>directe</option>
+                                <option>Bon</option>
+                                <option>IPM</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="btn btn-sm" id="sel1" style="font-size:small;" id="modePayement">
+                                <option>Payement Cache</option>
+                                <option>Check</option>>
+                            </select>
+                        </td>
+                        <td>
+                                <select class="btn btn-sm" id="sel1" style="font-size:small;" id="assurance">
+                                        <option>adama goudiaby</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                </select>
+                        </td>
                         <td style="text-align:center;"><a href="#" (click)="supprimerMedoc($event)">supprimer</a></td>
                     </tr>
                    
             </tbody>
             <thead>
                 <tr>
-                    <th colspan="4"> 
+                    <th colspan="6"> 
                        
                     </th>
-                    <th colspan="1">
+                    <th colspan="2">
                          <button class="btn btn-danger btn-sm" (click)="openModal(template,bodyTable)" style="width:100%;">Valider</button>
                          <ng-template #template>
                             <div class="modal-header">
-                              <h4 class="modal-title pull-left">Facture</h4>
+                              <h4 class="modal-title pull-left">Modal</h4>
                               <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
-                               
+                               <h1>Facture</h1>
                                <div class="row" *ngFor="let vm of ventesMedocs">
-                                    
                                     <div class="col-lg-9">
                                          {{vm.medicament}}  ( {{vm.quantite}} )
                                     </div>

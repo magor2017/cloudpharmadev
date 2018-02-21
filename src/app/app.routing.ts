@@ -11,6 +11,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IpmComponent } from './vente/ipm/ipm.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
+import { DirecteComponent } from './vente/directe/directe.component';
 //declaration des routes de navigatoin
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path:'vente',
                     component: VenteComponent,
                     children :[
+                        { path:'directe', component: DirecteComponent},
                         { path:'ipm', component: IpmComponent},
                         { path:'ipm', component: AnnulationComponent}
                     ] 

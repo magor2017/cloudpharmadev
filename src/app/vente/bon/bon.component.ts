@@ -8,11 +8,12 @@ import { parse } from 'url';
 import {NgPipesModule} from 'ngx-pipes';
 
 @Component({
-  selector: 'app-ipm',
-  templateUrl: './ipm.component.html',
-  styleUrls: ['./ipm.component.css']
+  selector: 'app-bon',
+  templateUrl: './bon.component.html',
+  styleUrls: ['./bon.component.css']
 })
-export class IpmComponent implements OnInit {
+export class BonComponent implements OnInit {
+
 
   matricule:string;
   nom:string;
@@ -98,6 +99,5 @@ nouveauMedoc(event){
      this.rechercheMedoc = false;
      return false;
 }
-
 
 }

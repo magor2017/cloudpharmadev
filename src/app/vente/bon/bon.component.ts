@@ -16,14 +16,24 @@ export class BonComponent implements OnInit {
 
 
   matricule:string;
-  nom:string;
-  prenom:string;
+  designation:string;
+  description:string;
+
   ventesMedocs = [];
   prixTotale   = 0;
-  rechercheMedoc    = false; 
+  rechercheMedoc    = false;
+  rechercheGroupe    = false;
+
   modalRef: BsModalRef;
 
   changerMotif = null;
+  changerMotifGoup = null;
+
+  groupes = [
+         {id:1, matricule: "1ds12dsd", designation: "ecole", description: "ecole de Grand Yoff" },
+         {id:2, matricule: "15sdsd", designation: "BBS investe", description: "Start-up" },
+  ];
+
   medicamentsSave  = [
     {id:1,medicament:'HELICOCIN 750/500MG CP B/42',prix:"5532",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:2,medicament:'FLOXAPEN GELU 500MG B20',prix:"3925",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
@@ -35,28 +45,29 @@ export class BonComponent implements OnInit {
 
   medicaments = []
 
+
   constructor(private router:Router, private modalService: BsModalService) { }
 
   ngOnInit() {
   }
 
   toutValider(bodyTable){
-    let 
+    let
     prix,
     prixT,
     quantite,
     medicament,
     codeClient;
-        
+
     let trs = bodyTable.querySelectorAll('tr');
     for(let tr of trs){
         prix = (tr.querySelector('#prix')).className;
         quantite =  (tr.querySelector('#quantite')).value;
         medicament =   (tr.querySelector('#medicament')).className;
-        
+
         prixT = JSON.parse(prix) * JSON.parse(quantite);
         this.ventesMedocs.push({medicament:medicament ,prix:prix  , quantite :quantite,prixTotal:  prixT});
-       
+
        this.prixTotale += prixT;
     }
     console.log(this.ventesMedocs);
@@ -82,22 +93,47 @@ changerecherche(event){
       this.rechercheMedoc = false;
       this.changerMotif = null;
     }
-    
+
 }
 
-nouveauMedoc(event){
-     let id = (event.target).id;
-     let obj = JSON.parse('{'+id+'}');
+changerechercheGroup(event){
+    if(((event.target).value).trim() != ''){
+        this.rechercheGroupe = true;
+        this.changerMotifGoup  = (event.target).value;
+    }
+    else {
+      this.rechercheGroupe = false;
+      this.changerMotifGoup = null;
+    }
 
-    //  for(let i = 0 ; i < this.medicaments.length ; i ++)
-    //     if(parseInt((this.medicaments)[i].id) == parseInt(obj.id)){
-    //         this.medicaments.splice(i,1);
-    //         this.prixTotale -= parseInt(obj.prix);
-    //     }
-
-     this.medicaments.push(obj);
-     this.rechercheMedoc = false;
-     return false;
 }
+
+  nouveauMedoc(event){
+       let id = (event.target).id;
+       let obj = JSON.parse('{'+id+'}');
+
+      //  for(let i = 0 ; i < this.medicaments.length ; i ++)
+      //     if(parseInt((this.medicaments)[i].id) == parseInt(obj.id)){
+      //         this.medicaments.splice(i,1);
+      //         this.prixTotale -= parseInt(obj.prix);
+      //     }
+
+       this.medicaments.push(obj);
+       this.rechercheMedoc = false;
+       return false;
+  }
+
+  nouveauGroupe(event){
+       let id = (event.target).id;
+       let obj = JSON.parse('{'+id+'}');
+
+       this.matricule = obj.matricule;
+       this.designation = obj.designation;
+       this.description = obj.description;
+
+       this.rechercheMedoc = false;
+       return false;
+  }
+
 
 }

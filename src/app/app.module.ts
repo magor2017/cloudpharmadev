@@ -27,6 +27,7 @@ import { DirecteComponent } from './vente/directe/directe.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
 import { AssuranceComponent } from './vente/assurance/assurance.component';
 import { BonComponent } from './vente/bon/bon.component';
+import { HeroService } from './services/hero.service';
 
 
 /*********************************************************************************
@@ -58,7 +59,7 @@ import { BonComponent } from './vente/bon/bon.component';
     ModalModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

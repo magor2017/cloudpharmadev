@@ -1,98 +1,107 @@
-<div class="row" style="margin-top:3rem; margin-bottom:3rem;">
-  <div class="input-group input-group-sm sort">
-          <input type="text" class="form-control input-sm" placeholder="rechercher médicament..." (keyup)="changerecherche($event)">
-          <span class="input-group-btn">
-                <button class="btn btn-secondary btn-sm" type="button">Go!</button>
-          </span>
-  </div>
-  <div class="row" style="margin-top:0px;" *ngIf="rechercheMedoc == true">
-      <ul style="position:absolute; background-color:blue;" class="col-lg-11">
-          <li  *ngFor="let medoc of  medicamentsSave | filterBy: ['medicament']: changerMotif " ><a (click)="nouveauMedoc($event)" id=' "medicament": "{{ medoc.medicament }}" ,"prix": "{{ medoc.prix }}"  , "quantite" : "{{ medoc.quantite }}" ,"modePayement" : "{{ medoc.modePayement }}", "assurance": "{{ medoc.assurance }}", "type": "{{ medoc.type }}" '>{{ medoc.medicament }}</a></li>
-      </ul>
- </div>
-</div>
+<div class="row" style="margin-top:2rem; border:1px solid green; padding: 2rem; border-radius:2rem;">
+    <div class="col-lg-12" style="text-alig:center;">
+          <div class="row">
+               <div class="col-lg-4">
 
-<div class="row">
-  <table class="table table-bordered table-sm">
-          <thead>
-          <tr>
-              <th>#</th>
-              <th>Medicament</th>
-              <th>Prix</th>
-              <th>Quantite</th>
-              <th>Type</th>
-              <th>Mode Payement (*)</th>
-              <th>Assurance (*)</th>
-              <th>supprimer</th>
-          </tr>
-          </thead>
-          <tbody #bodyTable>
-             
-                  <tr *ngFor="let medoc of medicaments">
-                      <th scope="row" id="num" class="{{ medoc.id}}">{{ medoc.id}}</th>
-                      <td id="medicament" class="{{ medoc.medicament}}">{{ medoc.medicament}}</td>
-                      <td id="prix" class="{{ medoc.prix}}">{{ medoc.prix}}</td>
-                      <td>
-                          <input id="quantite" value="0" type="number" class="input-sm" placeholder="quantité" style="width:6rem;"  >
-                      </td>
-                      <td>
-                          <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente">
-                              <option>directe</option>
-                              <option>Bon</option>
-                              <option>IPM</option>
-                          </select>
-                      </td>
-                      <td>
-                          <select class="btn btn-sm" id="sel1" style="font-size:small;" id="modePayement">
-                              <option>Payement Cache</option>
-                              <option>Check</option>>
-                          </select>
-                      </td>
-                      <td>
-                              <select class="btn btn-sm" id="sel1" style="font-size:small;" id="assurance">
-                                      <option>adama goudiaby</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                              </select>
-                      </td>
-                      <td style="text-align:center;"><a href="#" (click)="supprimerMedoc($event)">supprimer</a></td>
-                  </tr>
-                 
-          </tbody>
-          <thead>
-              <tr>
-                  <th colspan="6"> 
-                     
-                  </th>
-                  <th colspan="2">
-                       <button class="btn btn-danger btn-sm" (click)="openModal(template,bodyTable)" style="width:100%;">Valider</button>
-                       <ng-template #template>
-                          <div class="modal-header">
-                            <h4 class="modal-title pull-left">Modal</h4>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                             <h1>Facture</h1>
-                             <div class="row" *ngFor="let vm of ventesMedocs">
-                                  <div class="col-lg-9">
-                                       {{vm.medicament}}  ( {{vm.quantite}} )
+               </div>
+               <div class="col-lg-4">
+                    <h1 onloadedmetadata=""style="margin-top:0rem;border:2px solid green; color: green; text-align:center;  border-radius:2rem;"><B>Produits</B></h1>
+               </div>
+          </div>
+    </div>
+    <div class="input-group input-group-sm sort">
+            <input type="text" class="form-control input-sm" placeholder="rechercher d'un produit..." (keyup)="changerecherche($event)">
+            <span class="input-group-btn">
+                  <button class="btn btn-secondary btn-sm" type="button">Go!</button>
+            </span>
+    </div>
+    <div class="row" style="margin-top:0px;" *ngIf="rechercheMedoc == true">
+        <ul style="position:absolute; background-color:blue; z-index:2;" class="col-lg-11">
+            <li  *ngFor="let medoc of  medicamentsSave | filterBy: ['medicament']: changerMotif " ><a (click)="nouveauMedoc($event)" id=' "medicament": "{{ medoc.medicament }}" ,"prix": "{{ medoc.prix }}"  , "quantite" : "{{ medoc.quantite }}" ,"modePayement" : "{{ medoc.modePayement }}", "assurance": "{{ medoc.assurance }}", "type": "{{ medoc.type }}" '>{{ medoc.medicament }}</a></li>
+        </ul>
+   </div>
+   <div class="row" style="margin-top:1rem; text-align:center; border: 1px solid rgba(255,255,255,0.1);">
+       <table class="table table-bordered table-sm" style="width:45rem;">
+               <thead>
+               <tr>
+                   <th>#</th>
+                   <th>Medicament</th>
+                   <th>Prix</th>
+                   <th>Quantite</th>
+                   <th>Type</th>
+                   <th>Mode Payement (*)</th>
+                   <th>Assurance (*)</th>
+                   <th>supprimer</th>
+               </tr>
+               </thead>
+               <tbody #bodyTable>
+
+                       <tr *ngFor="let medoc of medicaments">
+                           <th scope="row" id="num" class="{{ medoc.id}}">{{ medoc.id}}</th>
+                           <td id="medicament" class="{{ medoc.medicament}}">{{ medoc.medicament}}</td>
+                           <td id="prix" class="{{ medoc.prix}}">{{ medoc.prix}}</td>
+                           <td>
+                               <input id="quantite" value="0" type="number" class="input-sm" placeholder="quantité" style="width:6rem;"  >
+                           </td>
+                           <td>
+                               <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente">
+                                   <option>directe</option>
+                                   <option>Bon</option>
+                                   <option>IPM</option>
+                               </select>
+                           </td>
+                           <td>
+                               <select class="btn btn-sm" id="sel1" style="font-size:small;" id="modePayement">
+                                   <option>Payement Cache</option>
+                                   <option>Check</option>>
+                               </select>
+                           </td>
+                           <td>
+                                   <select class="btn btn-sm" id="sel1" style="font-size:small;" id="assurance">
+                                           <option>adama goudiaby</option>
+                                           <option>2</option>
+                                           <option>3</option>
+                                           <option>4</option>
+                                   </select>
+                           </td>
+                           <td style="text-align:center;"><a href="#" (click)="supprimerMedoc($event)">supprimer</a></td>
+                       </tr>
+
+               </tbody>
+               <thead>
+                   <tr>
+                       <th colspan="6">
+
+                       </th>
+                       <th colspan="2">
+                            <button class="btn btn-danger btn-sm" (click)="openModal(template,bodyTable)" style="width:100%;">Valider</button>
+                            <ng-template #template>
+                               <div class="modal-header">
+                                 <h4 class="modal-title pull-left">Modal</h4>
+                                 <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                   <span aria-hidden="true">&times;</span>
+                                 </button>
+                               </div>
+                               <div class="modal-body">
+                                  <h1>Facture</h1>
+                                  <div class="row" *ngFor="let vm of ventesMedocs">
+                                       <div class="col-lg-9">
+                                            {{vm.medicament}}  ( {{vm.quantite}} )
+                                       </div>
+                                       <div class="col-lg-3">
+                                           {{vm.prixTotal}}
+                                       </div>
                                   </div>
-                                  <div class="col-lg-3">
-                                      {{vm.prixTotal}}
+                                  <div class="row" >
+                                        <p class="col-lg-12 " style="background-color:yellow; color:red; text-align:right;">{{ this.prixTotale }}</p>
                                   </div>
-                             </div>
-                             <div class="row" >
-                                   <p class="col-lg-12 " style="background-color:yellow; color:red; text-align:right;">{{ this.prixTotale }}</p>
-                             </div>
-                             <button class="btn btn-warning btn-sm" >Imprimer</button>
-                             <button class="btn btn-primary btn-sm" >sauver</button>
-                          </div>
-                        </ng-template>
-                  </th>
-              </tr>
-              </thead>
-      </table>
+                                  <button class="btn btn-warning btn-sm" >Imprimer</button>
+                                  <button class="btn btn-primary btn-sm" >sauver</button>
+                               </div>
+                             </ng-template>
+                       </th>
+                   </tr>
+                   </thead>
+           </table>
+   </div>
 </div>

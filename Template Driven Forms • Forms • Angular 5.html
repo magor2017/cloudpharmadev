@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://codecraft.tv/courses/angular/forms/template-driven/ -->
+<html lang="en-US" ng-app="ccApp" itemscope="" itemtype="http://schema.org/Article" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><style data-styles="">stencil-async-content,stencil-route,stencil-route-link,stencil-route-title,stencil-router,stencil-router-redirect,stx-abtest,test-app,test-demo-four,test-demo-six,test-demo-three{visibility:hidden}.💎{visibility:inherit}</style>
+  <title>Template Driven Forms • Forms • Angular 5</title>
+
+  <!-- Basic Page Head -->
+  
+
+  <meta name="description" content="In this lecture we converted our model driven form into a template driven form.  We learnt that the template driven form still uses the same classes as the model driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the c… ">
+
+  <script type="text/javascript" async="" src="./Template Driven Forms • Forms • Angular 5_files/heap-1761016128.js"></script><script async="" src="./Template Driven Forms • Forms • Angular 5_files/analytics.js"></script><script src="./Template Driven Forms • Forms • Angular 5_files/i4QCcbQ8V99CvMdnFGI6RILnjKM.js"></script><script src="./Template Driven Forms • Forms • Angular 5_files/w29n6KouhN4Gd4tvBK08VOwpu2g.js"></script><link rel="canonical" href="https://codecraft.tv/courses/angular/forms/template-driven/">
+
+  <!-- Mobile Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Open Graph -->
+  <meta name="description" content="In this lecture we converted our model driven form into a template driven form.  We learnt that the template driven form still uses the same classes as the model driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the c… ">
+  <meta property="og:title" content="Template Driven Forms • Forms • Angular 5">
+  <meta property="og:description" content="In this lecture we converted our model driven form into a template driven form.  We learnt that the template driven form still uses the same classes as the model driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the c… ">
+  <meta property="og:image" content="https://www.codecraft.tv/assets/images/site/codecraft-cover-v1.jpg">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CodeCraft">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@jawache">
+  <meta name="twitter:title" content="Template Driven Forms • Forms • Angular 5">
+  <meta name="twitter:description" content="In this lecture we converted our model driven form into a template driven form.  We learnt that the template driven form still uses the same classes as the model driven form but in the template drive approach the models are created by directives in the template instead of explicitly created on the c… ">
+  <meta name="twitter:creator" content="@jawache">
+  <meta name="twitter:image:src" content="https://www.codecraft.tv/assets/images/site/codecraft-cover-v1.jpg">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://codecraft.tv/assets/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://codecraft.tv/assets/images/favicon-16x16.png" sizes="16x16">
+
+  <!-- Fonts -->
+  <link href="./Template Driven Forms • Forms • Angular 5_files/css" rel="stylesheet" type="text/css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./Template Driven Forms • Forms • Angular 5_files/app-5ecdab89da01d5170bf3637dba1e36ad.css">
+
+  <script src="./Template Driven Forms • Forms • Angular 5_files/saved_resource" data-sumo-site-id="e93bcf489a889d57d69aed9c7caf8dbda83cf88ed41522320d4eb2b845dde0c2" async="async"></script>
+
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-65632705-11', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+<script src="./Template Driven Forms • Forms • Angular 5_files/abtest.utrjvmoe.pf.js" data-path="https://unpkg.com/stx-abtest@latest/dist/abtest/" data-core="abtest.wdmzp8oo.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="services/services" src="./Template Driven Forms • Forms • Angular 5_files/services.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="156085c5-0017-4150-b225-a731ad248f38/service" src="./Template Driven Forms • Forms • Angular 5_files/service.js"></script><style>@-webkit-keyframes insQ_100 {  from {  outline: 1px solid transparent  } to {  outline: 0px solid transparent }  }
+#menufication-top { animation-duration: 0.001s; animation-name: insQ_100; -webkit-animation-duration: 0.001s; -webkit-animation-name: insQ_100;  } </style><link type="text/css" rel="stylesheet" href="./Template Driven Forms • Forms • Angular 5_files/sme-contactform-popup.css"><link type="text/css" rel="stylesheet" href="./Template Driven Forms • Forms • Angular 5_files/sumome-share-client.css"><link type="text/css" rel="stylesheet" href="./Template Driven Forms • Forms • Angular 5_files/listbuilder-popup.css"><script src="./Template Driven Forms • Forms • Angular 5_files/embed.js" data-timestamp="1519898396869"></script><script type="text/javascript" charset="utf-8" async="" src="./Template Driven Forms • Forms • Angular 5_files/button.5f64a1a5864e1229f84c8defd65341b4.js"></script><script type="text/javascript" async="" src="./Template Driven Forms • Forms • Angular 5_files/16a168f0af2da0c3c2.js"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><link rel="prefetch" href="https://c.disquscdn.com/next/embed/styles/lounge.2d848eddee1b8c12749b72a04b2b33dc.css"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/common.bundle.845ead53749f15d0bd8a5ee344c8f06e.js"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/lounge.bundle.8241ae5fc761eb94635acdc63f5fd29f.js"><link rel="prefetch" href="https://disqus.com/next/config.js"><script src="./Template Driven Forms • Forms • Angular 5_files/alfalfa.4a5fcca1fe50a757044dfd331b660625.js" async="" charset="UTF-8"></script></head>
+<body style="">
+
+<header class="site-header">
+
+  <!-- Top navbar & branding -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+
+      <!-- Toggle buttons and brand -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+          <span class="glyphicon glyphicon-option-vertical"></span>
+        </button> 
+        <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button> 
+
+        <a class="navbar-brand" href="https://codecraft.tv/">
+          <span class="force-middle"></span>
+          <img src="./Template Driven Forms • Forms • Angular 5_files/logo-tall.png" alt="logo">
+        </a>
+      </div>
+      <!-- END Toggle buttons and brand -->
+
+      <!-- Top navbar -->
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="">
+            <a href="https://codecraft.tv/">Home</a>
+          </li>
+
+          <li class="">
+            <a href="https://codecraft.tv/blog/">Blog</a>
+          </li>
+
+
+          <!-- <li class="">
+            <a href="/training/">Training</a>
+          </li>-->
+
+          <li class="">
+            <a href="https://codecraft.tv/courses/">Courses</a>
+            <!-- <li class="dropdown  active">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button">Courses <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/courses/angular/">Angular 4</a>
+                </li>
+                <li>
+                  <a target="_blank" href="http://academy.codecraft.tv/p/angularjs/">AngularJS 1.x</a>
+                </li>
+                <li>
+                  <a target="_blank" href="http://academy.codecraft.tv/p/advanced-javascript/">Advanced JavaScript</a>
+                </li>
+              </ul>
+            </li> -->
+          </li>
+
+          <li class="">
+            <a href="https://codecraft.tv/speaking/">Speaking</a>
+          </li>
+
+          <!--<li class="">-->
+          <!--<a href="/training/">Training</a>-->
+          <!--</li>-->
+          <!--<user-auth class="navbar-nav nav"></user-auth>-->
+        </ul>
+      </div>
+      <!-- END Top navbar -->
+
+    </div>
+  </nav>
+  <!-- END Top navbar & branding -->
+
+</header>
+<main class="container lecture">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <aside class="col-md-3 col-sm-3 sidebar">
+      <ul class="sidenav dropable">
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Quickstart
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/plunker/" class="">Plunker
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/typescript-intro/" class="">Intro to TypeScript
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/first-app/" class="">Writing our first app
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/string-interpolation/" class="">String Interpolation
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/looping/" class="">Looping
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/property-and-event-binding/" class="">Property &amp; Event Binding
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/domain-models/" class="">Domain Model
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/nesting-components-and-inputs/" class="">Nesting Components &amp; Inputs
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/user-interaction-and-outputs/" class="">User Interaction &amp; Outputs
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/quickstart/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">ES6 JavaScript &amp; TypeScript
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/1/" class="">TypeScript Setup
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/let/" class="">Let
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/const/" class="">Const
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/template-strings/" class="">Template Strings
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/arrow/" class="">Fat Arrow Functions
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/destructuring/" class="">Destructuring
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/for-of/" class="">For Of
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/mapset/" class="">Map &amp; Set
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/promises/" class="">Promises
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/classinterface/" class="">Class &amp; Interface
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/decorators/" class="">Decorators
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/modules/" class="">Modules
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/types/" class="">Types
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/es6-typescript/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Angular CLI
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/angular-cli/overview/" class="">Angular CLI
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/angular-cli/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/angular-cli/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Components
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/architecting/" class="">Architecting with Components
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/templates-styles-view-encapsulation/" class="">Templates, Styles &amp; View Encapsulation
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/content-projection/" class="">Content Projection
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/lifecycle-hooks/" class="">Lifecycle Hooks
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/viewchildren-and-contentchildren/" class="">ViewChildren &amp; ContentChildren
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/components/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Built-in Directives
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/ngfor/" class="">NgFor
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/ngif-and-ngswitch/" class="">NgIf &amp; NgSwitch
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/ngstyle-and-ngclass/" class="">NgStyle &amp; NgClass
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/ngnonbindable/" class="">NgNonBindable
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/structural-directives/" class="">Structural Directives
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/built-in-directives/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Custom Directives
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/creating-a-custom-directive/" class="">Creating a custom directive
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/hostlistener-and-hostbinding/" class="">HostListener &amp; HostBinding
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/inputs-and-configuration/" class="">Inputs &amp; Configuration
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/custom-directives/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Reactive Programming with RxJS
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/streams-and-reactive-programming/" class="">Streams &amp; Reactive Programming
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/observables-and-rxjs/" class="">Observables &amp; RxJS
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/rxjs-and-angular/" class="">RxJS &amp; Angular
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/reactive-programming-with-rxjs/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Pipes
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/built-in-pipes/" class="">Built-in Pipes
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/async-pipe/" class="">Async Pipe
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/custom-pipes/" class="">Custom Pipes
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/pipes/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="active open has-child">Forms
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/model-driven/" class="">Model Driven Forms
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/model-driven-validation/" class="">Model Driven Form Validation
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/submitting-and-resetting/" class="">Submitting &amp; Resetting
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/reactive-model-form/" class="">Reactive Model Form
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/template-driven/" class="active">Template Driven Forms
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/flash-cards/" class="">Flash Cards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/forms/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Dependency Injection &amp; Providers
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/injectors/" class="">Injectors
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/providers/" class="">Provider
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/tokens/" class="">Tokens
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/configuring/" class="">Configuring Dependency Injection in Angular
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/ngmodule-providers-vs-component-providers-vs-component-viewproviders/" class="">NgModule.providers vs Component.providers vs Component.viewProviders
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/dependency-injection-and-providers/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">HTTP
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/core-http-api/" class="">Core HTTP API
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/http-with-promises/" class="">HTTP Example with Promises
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/http-with-observables/" class="">HTTP Example with Observables
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/jsonp-with-observables/" class="">JSONP Example with Observables
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/http/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Routing
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/route-configuration/" class="">Route Configuration
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/navigation/" class="">Navigation
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/parameterised-routes/" class="">Parameterised Routes
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/nested-routes/" class="">Nested Routes
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/router-guards/" class="">Router Guards
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/routing-strategies/" class="">Routing Strategies
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/summary/" class="">Wrapping Up
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/routing/activity/" class="">Activity
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Unit Testing
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/jasmine-and-karma/" class="">Jasmine &amp; Karma
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/classes-and-pipes/" class="">Testing Classes &amp; Pipes
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/mocks-and-spies/" class="">Testing with Mocks &amp; Spies
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/" class="">Angular Test Bed
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/change-detection/" class="">Testing Change Detection
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/asynchronous/" class="">Testing Asynchronous Code
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/dependency-injection/" class="">Testing Dependency Injection
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/components/" class="">Testing Components
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/directives/" class="">Testing Directives
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/model-driven-forms/" class="">Testing Model Driven Forms
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/http-and-jsonp/" class="">Testing Http
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/routing/" class="">Testing Routing
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/unit-testing/summary/" class="">Wrapping Up
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Advanced Topics
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/advanced-topics/basic-custom-validators/" class="">Custom Form Validators
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/advanced-topics/configurable-custom-validators/" class="">Configurable Custom Form Validators
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/template-driven/#" class="has-child">Final Project
+          </a>
+          <!--  -->
+          <ul>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/overview/" class="">Overview
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-1-services/" class="">Step 1 - Services
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-2-routing/" class="">Step 2 - Routing
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-3-navigation/" class="">Step 3 - Navigation
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-4-searching/" class="">Step 4 - Searching
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-5-pagination/" class="">Step 5 - Pagination
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-6-booklist/" class="">Step 9 - Book List
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-7-book/" class="">Step 9 - Book
+              </a>
+            </li>
+            <li>
+              <a href="https://codecraft.tv/courses/angular/project/step-8-library/" class="">Step 9 - Library
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <!-- END Sidebar -->
+    <!-- Main content -->
+    <article class="col-md-9 col-sm-9 main-content" role="main">
+
+      <ol class="breadcrumb">
+        <li>
+          <a href="https://codecraft.tv/courses/angular/">Angular 5</a>
+        </li>
+        <li>
+          <a href="https://codecraft.tv/courses/angular/forms/overview/">Forms</a>
+        </li>
+        <li class="active">Template Driven Forms</li>
+      </ol>
+
+      <header>
+        <h1>Template Driven Forms</h1>
+      </header>
+
+      <ul class="post-meta">
+        <li><i>Author:</i>
+          <span id="author">
+            <img class="img img-circle" src="./Template Driven Forms • Forms • Angular 5_files/asim-bw.jpg" alt="">
+            Asim
+            <span class="twitter-button">
+              <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="./Template Driven Forms • Forms • Angular 5_files/follow_button.36c0c29c73929bf937f4c70adb1a29e4.en.html" style="position: static; visibility: visible; width: 209px; height: 20px;" data-screen-name="jawache"></iframe>
+            </span>
+          </span>        </li>
+      </ul>
+
+
+      <div class="embed-container">
+        <div data-vimeo-id="192319880" data-vimeo-initialized="true"><iframe src="./Template Driven Forms • Forms • Angular 5_files/192319880.html" width="640" height="360" frameborder="0" title="Angular / Forms / Template Driven Forms" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div>
+      </div>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous">
+            <a href="https://codecraft.tv/courses/angular/forms/reactive-model-form/">Reactive Model Form</a>
+          </li>
+      
+          <li class="next">
+            <a href="https://codecraft.tv/courses/angular/forms/summary/">Wrapping Up</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="lecture-content">
+        <div id="toc" class="toc">
+
+<ul class="sectlevel1">
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_learning_objectives">Learning Objectives</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_overview">Overview</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_form_setup">Form setup</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_directives">Directives</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_two_way_data_binding">Two way data binding</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_domain_model">Domain model</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation">Validation</a>
+<ul class="sectlevel2">
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation_styling">Validation styling</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation_messages">Validation messages</a></li>
+</ul>
+</li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_submitting_the_form">Submitting the&nbsp;form</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_resetting_the_form">Resetting the&nbsp;form</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_summary">Summary</a></li>
+<li><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_listing">Listing</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In&nbsp;this lecture we’ll be converting the&nbsp;model driven form we’ve been building so far in&nbsp;this section into a&nbsp;<em>template driven</em> form.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learning_objectives"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_learning_objectives">Learning Objectives</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Know the&nbsp;differences and&nbsp;similarities between template driven forms and&nbsp;model driven forms.</p>
+</li>
+<li>
+<p>How to&nbsp;use the&nbsp;<code>ngModel</code> directive to&nbsp;link template input controls to&nbsp;properties on&nbsp;the component.</p>
+</li>
+<li>
+<p>How to&nbsp;implement form validation in&nbsp;the template driven approach.</p>
+</li>
+<li>
+<p>How to&nbsp;submit and&nbsp;reset a&nbsp;form in&nbsp;the template driven approach.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The&nbsp;key in&nbsp;understanding the&nbsp;<em>template driven</em> approach is that it <em>still</em> uses the&nbsp;same models as&nbsp;the <em>model driven</em> approach. In&nbsp;the template driven approach Angular creates the&nbsp;models, the&nbsp;<code>FormGroups</code> and&nbsp;<code>FormControls</code>, for&nbsp;us via directives we add to&nbsp;the template.</p>
+</div>
+<div class="paragraph">
+<p>That’s why in&nbsp;this course we teach the&nbsp;model driven approach first. So you’ll have a&nbsp;good knowledge of&nbsp;the underlying model structure that is still present in&nbsp;template driven forms.</p>
+</div>
+<div class="callout callout-tip"><h4>Tip</h4><div>
+<div class="paragraph">
+<p>Template Drive Forms are just Model Driven Form but <em>driven</em> by&nbsp;directives in&nbsp;the the&nbsp;template versus code in&nbsp;the component.
+<br>
+In&nbsp;template driven we use directives to&nbsp;create the&nbsp;model.
+<br>
+In&nbsp;model driven we create a&nbsp;model on&nbsp;the component and&nbsp;then use directives to&nbsp;map elements in&nbsp;the template to&nbsp;our form model.</p>
+</div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_form_setup"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_form_setup">Form setup</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We create a&nbsp;basic form component, exactly the&nbsp;same as&nbsp;the model form component we started with in&nbsp;this section, with a&nbsp;basic form template, a&nbsp;dynamic select box and&nbsp;a simple component like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>@Component({
+    selector: 'template-form',
+    templateUrl: `
+&lt;form novalidate&gt;
+  &lt;fieldset&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label&gt;First Name&lt;/label&gt;
+      &lt;input type="text"
+             class="form-control"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label&gt;Last Name&lt;/label&gt;
+      &lt;input type="text"
+             class="form-control"&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label&gt;Email&lt;/label&gt;
+    &lt;input type="email"
+           class="form-control"&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label&gt;Password&lt;/label&gt;
+    &lt;input type="password"
+           class="form-control"&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label&gt;Language&lt;/label&gt;
+    &lt;select class="form-control"&gt;
+      &lt;option value=""&gt;Please select a language&lt;/option&gt;
+      &lt;option *ngFor="let lang of langs"
+              [value]="lang"&gt;
+              {{lang}}
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+`
+})
+class TemplateFormComponent implements OnInit {
+
+    langs:string[] = [
+        'English',
+        'French',
+        'German',
+    ];
+
+    ngOnInit() {
+    }
+}</code></pre>
+</div>
+</div>
+<div class="callout callout-important"><h4>Important</h4><div>
+Remove all the&nbsp;<code>formGroup</code>, <code>formGroupName</code>, <code>formControl</code> and&nbsp;<code>formControlName</code> directives from our template, these are from the&nbsp;<code>ReactiveFormsModule</code> and&nbsp;used for&nbsp;model driven forms.
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_directives"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_directives">Directives</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The&nbsp;directives we need to&nbsp;build template driven forms are in&nbsp;the <code>FormsModule</code> not the&nbsp;<code>ReactiveFormsModule</code>, so lets import that and&nbsp;add it to&nbsp;our <code>NgModule</code> as&nbsp;an import and&nbsp;remove the&nbsp;<code>ReactiveFormsModule</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>import {FormsModule} from '@angular/forms';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One of&nbsp;the directives pulled in&nbsp;via the&nbsp;<code>FormsModule</code> is called <code>NgForm</code>.</p>
+</div>
+<div class="paragraph">
+<p>This directive has a&nbsp;selector which matches the&nbsp;<code>&lt;form&gt;</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>So just by&nbsp;adding <code>FormsModule</code> to&nbsp;our <code>NgModule</code> imports our template form is already associated wth an&nbsp;instance of&nbsp;the <code>NgForm</code> directive.</p>
+</div>
+<div class="paragraph">
+<p>This instance of&nbsp;<code>ngForm</code> is <em>hidden</em> but we can expose it with a&nbsp;local template reference variable attached to&nbsp;the form element, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">form</span> <span class="tok-err">#</span><span class="tok-na">f</span><span class="tok-o">=</span><span class="tok-s">"ngForm"</span><span class="tok-p">&gt;</span> ... <span class="tok-p">&lt;/</span><span class="tok-nt">form</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can use the&nbsp;variable <code>f</code> in&nbsp;our template and&nbsp;it will point to&nbsp;our instance of&nbsp;the <code>ngForm</code> directive.</p>
+</div>
+<div class="paragraph">
+<p>One of&nbsp;the things the&nbsp;<code>ngForm</code> directive does is create a&nbsp;top level <code>FormGroup</code> and&nbsp;lets us call functions as&nbsp;if it was an&nbsp;instance of&nbsp;a <code>FormGroup</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you remember one of&nbsp;the properties on&nbsp;a <code>FormGroup</code> was value, this is an&nbsp;object representation of&nbsp;all the&nbsp;forms controls.</p>
+</div>
+<div class="paragraph">
+<p>So just like model driven forms we can output that to&nbsp;screen simply with a&nbsp;pre tag and&nbsp;the json pipe, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>{{f.value | json}}<span class="tok-p">&lt;/</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you ran this code now all that would get printed out is <code>{}</code>. The&nbsp;forms value is an&nbsp;empty object, even if you started typing into the&nbsp;input fields the&nbsp;value would not update.</p>
+</div>
+<div class="paragraph">
+<p>This is because the&nbsp;<code>ngForm</code> directive doesn’t <em>automatically</em> detect all the&nbsp;controls that exist inside the&nbsp;<code>&lt;form&gt;</code> tag it’s linked to. So although it’s created a&nbsp;top level <code>FormGroup</code>, it’s empty.</p>
+</div>
+<div class="paragraph">
+<p>We need go through and&nbsp;<em>explicitly</em> register each template control with the&nbsp;<code>ngForm</code> directive. <code>ngForm</code> will then create a&nbsp;<code>FormControl</code> instance and&nbsp;map that to&nbsp;the <code>FormGroup</code>.</p>
+</div>
+<div class="paragraph">
+<p>In&nbsp;model driven forms we added <code>formControlName</code> directives to&nbsp;map template form controls to&nbsp;existing model form controls on&nbsp;the component.</p>
+</div>
+<div class="paragraph">
+<p>In&nbsp;template driven forms we need Angular to&nbsp;create the&nbsp;model form controls for&nbsp;us for&nbsp;each template form control. To&nbsp;do that we need to&nbsp;do two things to&nbsp;each template form control:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add the&nbsp;<code>NgModel</code> directive</p>
+</li>
+<li>
+<p>Add the&nbsp;<code>name</code> attribute.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The&nbsp;<code>NgModel</code> directive creates the&nbsp;<code>FormControl</code> instance to&nbsp;manage the&nbsp;template form control and&nbsp;the <code>name</code> attribute tells the&nbsp;<code>NgModel</code> directive what <em>key</em> to&nbsp;store that <code>FormControl</code> under in&nbsp;the parent <code>FormGroup</code>, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"foo"</span> <span class="tok-na">ngModel</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>let model = new FormGroup({
+  "foo": new FormControl()
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After adding <code>ngModel</code> to&nbsp;our template email input control, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">div</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-group"</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>Email<span class="tok-p">&lt;/</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+         <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-na">ngModel</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;/</span><span class="tok-nt">div</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can also see that <code>f.value</code> now shows the&nbsp;value of&nbsp;the email field, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="json"><span></span><span class="tok-p">{</span>
+  <span class="tok-nt">"email"</span><span class="tok-p">:</span> <span class="tok-s2">"asim@codecraft.tv"</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we now added the&nbsp;<code>name</code> attribute and&nbsp;ngModel directive to&nbsp;all of&nbsp;our template form controls we would see <code>f.value</code> print out:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="json"><span></span><span class="tok-p">{</span>
+  <span class="tok-nt">"firstName"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"lastName"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"email"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"password"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"language"</span><span class="tok-p">:</span> <span class="tok-s2">""</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This isn’t exactly the&nbsp;same as&nbsp;before, in&nbsp;our model driven form we wanted to&nbsp;group <code>firstName</code> and&nbsp;<code>lastName</code> into a&nbsp;nested <code>FormGroup</code> called <code>name</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can do the&nbsp;same in&nbsp;template driven forms with the&nbsp;<code>ngModelGroup</code> directive, lets add that to&nbsp;the parent <code>fieldset</code> element of&nbsp;our <code>firstName</code> and&nbsp;<code>lastName</code> template form controls, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">fieldset</span> <span class="tok-na">ngModelGroup</span><span class="tok-o">=</span><span class="tok-s">"name"</span><span class="tok-p">&gt;</span> ... <span class="tok-p">&lt;/</span><span class="tok-nt">fieldset</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can now see that the&nbsp;output of&nbsp;<code>f.value</code> matches what we have before</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="json"><span></span><span class="tok-p">{</span>
+  <span class="tok-nt">"name"</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+    <span class="tok-nt">"firstName"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+    <span class="tok-nt">"lastName"</span><span class="tok-p">:</span> <span class="tok-s2">""</span>
+  <span class="tok-p">},</span>
+  <span class="tok-nt">"email"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"password"</span><span class="tok-p">:</span> <span class="tok-s2">""</span><span class="tok-p">,</span>
+  <span class="tok-nt">"language"</span><span class="tok-p">:</span> <span class="tok-s2">""</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have now mirrored the&nbsp;model we created in&nbsp;the model driven form using template driven forms, with <code>FormControls</code> and&nbsp;a nested <code>FormGroup</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_two_way_data_binding"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_two_way_data_binding">Two way data binding</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another feature of&nbsp;the <code>ngModel</code> directive is that it lets us setup <em>two way</em> data binding between a&nbsp;template form control and&nbsp;a variable on&nbsp;our component.</p>
+</div>
+<div class="paragraph">
+<p>So when the&nbsp;user changes the&nbsp;value in&nbsp;the template form control the&nbsp;value of&nbsp;the variable on&nbsp;the component automatically updates and&nbsp;when we change the&nbsp;variable on&nbsp;the component the&nbsp;template form control automatically updates.</p>
+</div>
+<div class="paragraph">
+<p>The&nbsp;syntax for&nbsp;using the&nbsp;<code>ngModel</code> directive in&nbsp;this way is a&nbsp;little bit different, let’s set this up for&nbsp;our email field. First we add a&nbsp;string property called <code>email</code> on&nbsp;our component so we have somewhere to&nbsp;store the&nbsp;email, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>class TemplateFormComponent implements OnInit {
+    email: string; <i class="conum" data-value="1"></i><b>(1)</b>
+    langs:string[] = [
+        'English',
+        'French',
+        'German',
+    ];
+
+    ngOnInit() {
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We add an&nbsp;<code>email</code> property so we can store the&nbsp;email the&nbsp;user enters on&nbsp;the component.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Then we setup <em>two way</em> data binding by&nbsp;changing our email <code>ngModel</code> directive to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-err">...</span> <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">email</span><span class="tok-err">"</span> <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="callout callout-note"><h4>Note</h4><div>
+<div class="paragraph">
+<p>The&nbsp;<code>[( )]</code> syntax is a&nbsp;combination of&nbsp;the syntax for&nbsp;input property binding <code>[]</code> and&nbsp;output event binding <code>()</code></p>
+</div>
+<div class="paragraph">
+<p>The&nbsp;long form of&nbsp;writing the&nbsp;above would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-err">...</span> <span class="tok-err">[</span><span class="tok-na">ngModel</span><span class="tok-err">]="</span><span class="tok-na">email</span><span class="tok-err">"</span> <span class="tok-err">(</span><span class="tok-na">ngModelChange</span><span class="tok-err">)="</span><span class="tok-na">email </span><span class="tok-o">=</span> <span class="tok-s">$event"</span> <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But the&nbsp;<code>[()]</code> syntax is shorter and&nbsp;clearly shows we are implementing <em>two way</em> data binding on&nbsp;this input control.</p>
+</div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_domain_model"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_domain_model">Domain model</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In&nbsp;Angular we typically won’t data bind to&nbsp;a simple string or&nbsp;object on&nbsp;our component but a&nbsp;<em>domain model</em> we’ve defined via a&nbsp;class, lets create one for&nbsp;our Signup form called Signup.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>class Signup {
+  constructor(public firstName:string = '',
+              public lastName:string = '',
+              public email:string = '',
+              public password:string = '',
+              public language:string = '') {
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then on&nbsp;our component we replace our <code>email</code> property with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>model: Signup = new Signup();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now lets bind all our input controls to&nbsp;our model directly, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-err">...</span> <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span> <span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validation"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation">Validation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In&nbsp;the model driven approach we defined the&nbsp;validators via code in&nbsp;the component.</p>
+</div>
+<div class="paragraph">
+<p>In&nbsp;the template driven approach we define the&nbsp;validators via <code>directives</code> and&nbsp;<abbr>HTML</abbr>5 attributes in&nbsp;our template itself, lets add validators to&nbsp;our form template.</p>
+</div>
+<div class="paragraph">
+<p>All the&nbsp;fields apart from the&nbsp;language were <em>required</em>, so we’ll just add the&nbsp;<code>required</code> attribute to&nbsp;those input fields, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+           <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+           <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+           <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span>
+           <span class="tok-na">required</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The&nbsp;email field also had a&nbsp;<em>pattern</em> validator, we can add that via an&nbsp;attribute as&nbsp;well, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+     <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+     <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+     <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span>
+     <span class="tok-na">required</span>
+     <span class="tok-na">pattern</span><span class="tok-o">=</span><span class="tok-s">"[^ @]*@[^ @]*"</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The&nbsp;password field also had a&nbsp;<em>min length</em> validator, we can add that via an&nbsp;attribute also, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"password"</span>
+       <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+       <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"password"</span>
+       <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">password</span><span class="tok-err">"</span>
+       <span class="tok-na">required</span>
+       <span class="tok-na">minlength</span><span class="tok-o">=</span><span class="tok-s">"8"</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="callout callout-important"><h4>Important</h4><div>
+The&nbsp;<code>attributes</code> we are adding to&nbsp;add validation to&nbsp;our control are parts of&nbsp;the standard <abbr>HTML</abbr>5 specification. They are <nobr>built-in</nobr> to&nbsp;<abbr>HTML</abbr>5 and&nbsp;not part of&nbsp;Angular.
+</div></div>
+<div class="sect2">
+<h3 id="_validation_styling"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation_styling">Validation styling</a></h3>
+<div class="paragraph">
+<p>Similar to&nbsp;model driven forms we can access each model form controls state by&nbsp;going through the&nbsp;top level form group.</p>
+</div>
+<div class="paragraph">
+<p>The&nbsp;<code>ngForm</code> directive makes the&nbsp;top level <code>FormGroup</code> available to&nbsp;us via the&nbsp;<code>.form</code> property, so we can show the&nbsp;<em>valid</em>, <em>dirty</em> or&nbsp;<em>touched</em> state of&nbsp;our email field like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>Valid? {{f.form.controls.email?.valid}}<span class="tok-p">&lt;/</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>Dirty? {{f.form.controls.email?.dirty}}<span class="tok-p">&lt;/</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span>Touched? {{f.form.controls.email?.touched}}<span class="tok-p">&lt;/</span><span class="tok-nt">pre</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="callout callout-important"><h4>Important</h4><div>
+<div class="paragraph">
+<p>The&nbsp;<code>?</code> is called the&nbsp;<em>elvis</em> operator, it means:
+<br>
+<br>
+<em>"Only try to&nbsp;call the&nbsp;property on&nbsp;the right of&nbsp;<code>?</code> if the&nbsp;property on&nbsp;the left of&nbsp;<code>?</code> is <strong>not</strong> null"</em>
+<br>
+<br>
+So if <code>form.controls.email</code> was <code>null</code> or&nbsp;<code>undefined</code> it would not try to&nbsp;call <code>form.controls.email.valid</code> (which would throw an&nbsp;error).
+<br>
+<br>
+In&nbsp;template driven forms the&nbsp;controls can sometimes be <code>null</code> when Angular is building the&nbsp;page, so to&nbsp;be safe we use the&nbsp;<em>elvis</em> operator. We don’t need to&nbsp;use this in&nbsp;model driven forms since the&nbsp;models are created already in&nbsp;our component by&nbsp;the time the&nbsp;<abbr>HTML</abbr> form is shown on&nbsp;the page.</p>
+</div>
+</div></div>
+<div class="paragraph">
+<p>So again similar to&nbsp;model driven forms we can use this in&nbsp;conjunction with the&nbsp;<code>ngClass</code> directive and&nbsp;the validation classes from twitter bootstrap to&nbsp;style our form to&nbsp;give visual feedback to&nbsp;the user when it’s invalid.</p>
+</div>
+<div class="paragraph">
+<p>Lets add validation styling to&nbsp;our email field, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">div</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-group"</span>
+     <span class="tok-err">[</span><span class="tok-na">ngClass</span><span class="tok-err">]="{</span>
+      <span class="tok-err">'</span><span class="tok-na">has-danger</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">invalid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">touched</span><span class="tok-err">),</span>
+      <span class="tok-err">'</span><span class="tok-na">has-success</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">valid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">form</span><span class="tok-err">.</span><span class="tok-na">controls</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">?.</span><span class="tok-na">touched</span><span class="tok-err">)</span>
+ <span class="tok-err">}"</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>Email<span class="tok-p">&lt;/</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+         <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span>
+         <span class="tok-na">required</span>
+         <span class="tok-na">pattern</span><span class="tok-o">=</span><span class="tok-s">"[^ @]*@[^ @]*"</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;/</span><span class="tok-nt">div</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The&nbsp;above code displays a&nbsp;red border round the&nbsp;input control when it’s invalid and&nbsp;a green border when it’s valid.</p>
+</div>
+<div class="sect3">
+<h4 id="_writing_shorter_validation_expressions"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_writing_shorter_validation_expressions">Writing shorter validation expressions</a></h4>
+<div class="paragraph">
+<p>The&nbsp;<code>NgForm</code> directive does provide us with a&nbsp;shortcut to&nbsp;the <code>controls</code> property so we can write <code>f.controls.email?.valid</code> instead of&nbsp;<code>f.form.controls.email?.valid</code>.</p>
+</div>
+<div class="paragraph">
+<p>But both are still pretty <em>wordy</em>, and&nbsp;if we wanted to&nbsp;get access to&nbsp;a nested form control like <code>firstName</code> it can become even more cumbersome, <code>f.controls.name.firstName?.valid</code>.</p>
+</div>
+<div class="paragraph">
+<p>Using the&nbsp;<code>ngModel</code> directive however provides us with a&nbsp;<em>much</em> shorter alternative.</p>
+</div>
+<div class="paragraph">
+<p>We can get access to&nbsp;the instance of&nbsp;our <code>ngModel</code> directive by&nbsp;using a&nbsp;<em>local template reference variable</em>, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-err">...</span> <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span> <span class="tok-err">#</span><span class="tok-na">email</span><span class="tok-o">=</span><span class="tok-s">"ngModel"</span><span class="tok-p">&gt;</span> <span class="tok-p">&lt;/</span><span class="tok-nt">input</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then in&nbsp;our template we can use our local variable <code>email</code>.</p>
+</div>
+<div class="paragraph">
+<p>Since <code>NgModel</code> created the&nbsp;<code>FormControl</code> instance to&nbsp;manage the&nbsp;template form control in&nbsp;the first place, it stored a&nbsp;<em>reference</em> to&nbsp;that <code>FormControl</code> in&nbsp;its <code>control</code> property which we can now access in&nbsp;the template like so <code>email.control.touched</code>. This is such a&nbsp;common use case that the&nbsp;<code>ngModel</code> directive provides us a&nbsp;shortcut to&nbsp;the <code>control</code> property, so we can just type <code>email.touched</code> instead.</p>
+</div>
+<div class="paragraph">
+<p>We can then shorten our validation class expression and&nbsp;<nobr>re-write</nobr> the&nbsp;template for&nbsp;our email control like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">div</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-group"</span>
+     <span class="tok-err">[</span><span class="tok-na">ngClass</span><span class="tok-err">]="{</span>
+      <span class="tok-err">'</span><span class="tok-na">has-danger</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">invalid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">touched</span><span class="tok-err">),</span> <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="tok-err">'</span><span class="tok-na">has-success</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">valid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">touched</span><span class="tok-err">)</span>
+ <span class="tok-err">}"</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>Email<span class="tok-p">&lt;/</span><span class="tok-nt">label</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">input</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control"</span>
+         <span class="tok-na">name</span><span class="tok-o">=</span><span class="tok-s">"email"</span>
+         <span class="tok-err">[(</span><span class="tok-na">ngModel</span><span class="tok-err">)]="</span><span class="tok-na">model</span><span class="tok-err">.</span><span class="tok-na">email</span><span class="tok-err">"</span>
+         <span class="tok-na">required</span>
+         <span class="tok-na">pattern</span><span class="tok-o">=</span><span class="tok-s">"[^ @]*@[^ @]*"</span>
+         <span class="tok-err">#</span><span class="tok-na">email</span><span class="tok-o">=</span><span class="tok-s">"ngModel"</span><span class="tok-p">&gt;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="tok-p">&lt;/</span><span class="tok-nt">div</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We can now access the&nbsp;form control directly through the&nbsp;template local variable called <code>email</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We create a&nbsp;template local variable pointing to&nbsp;the instance of&nbsp;the ngModel directive on&nbsp;this input control.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>So now our template is a&nbsp;lot less <em>verbose</em>.</p>
+</div>
+<div class="callout callout-important"><h4>Important</h4><div>
+<div class="paragraph">
+<p>As&nbsp;long as&nbsp;we named our local reference variables the&nbsp;same name we named our form controls in&nbsp;the <em>model driven version of&nbsp;this form</em> we can just <nobr>re-use</nobr> the&nbsp;same <code>ngClass</code> syntax, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">div</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-group"</span>
+       <span class="tok-err">[</span><span class="tok-na">ngClass</span><span class="tok-err">]="{</span>
+        <span class="tok-err">'</span><span class="tok-na">has-danger</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">invalid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">touched</span><span class="tok-err">),</span>
+        <span class="tok-err">'</span><span class="tok-na">has-success</span><span class="tok-err">'</span><span class="tok-na">:</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">valid</span> <span class="tok-err">&amp;&amp;</span> <span class="tok-err">(</span><span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">dirty</span> <span class="tok-err">||</span> <span class="tok-na">email</span><span class="tok-err">.</span><span class="tok-na">touched</span><span class="tok-err">)</span>
+   <span class="tok-err">}"</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation_messages"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_validation_messages">Validation messages</a></h3>
+<div class="paragraph">
+<p>As&nbsp;for form validation messages, we can use <em>exactly the&nbsp;same method</em> that we used in&nbsp;model driven forms. As&nbsp;long as&nbsp;we named the&nbsp;local reference variables the&nbsp;same as&nbsp;the form controls in&nbsp;the model driven approach we can use exactly the&nbsp;same <abbr>HTML</abbr> in&nbsp;our template driven forms, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">div</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"form-control-feedback"</span>
+     <span class="tok-err">*</span><span class="tok-na">ngIf</span><span class="tok-o">=</span><span class="tok-s">"email.errors &amp;&amp; (email.dirty || email.touched)"</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">p</span> <span class="tok-err">*</span><span class="tok-na">ngIf</span><span class="tok-o">=</span><span class="tok-s">"email.errors.required"</span><span class="tok-p">&gt;</span>Email is required<span class="tok-p">&lt;/</span><span class="tok-nt">p</span><span class="tok-p">&gt;</span>
+  <span class="tok-p">&lt;</span><span class="tok-nt">p</span> <span class="tok-err">*</span><span class="tok-na">ngIf</span><span class="tok-o">=</span><span class="tok-s">"email.errors.minlength"</span><span class="tok-p">&gt;</span>Email must contain at least the @ character<span class="tok-p">&lt;/</span><span class="tok-nt">p</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;/</span><span class="tok-nt">div</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submitting_the_form"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_submitting_the_form">Submitting the&nbsp;form</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Submitting a&nbsp;form is exactly the&nbsp;same in&nbsp;model driven forms as&nbsp;it is in&nbsp;template driven forms.</p>
+</div>
+<div class="paragraph">
+<p>We need a&nbsp;submit button, this is just button with a&nbsp;<code>type="submit"</code> somewhere between the&nbsp;opening and&nbsp;closing <code>form</code> tags.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">form</span><span class="tok-p">&gt;</span>
+  .
+  .
+  .
+  <span class="tok-p">&lt;</span><span class="tok-nt">button</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"submit"</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"btn btn-primary"</span> <span class="tok-p">&gt;</span>Submit<span class="tok-p">&lt;/</span><span class="tok-nt">button</span><span class="tok-p">&gt;</span>
+<span class="tok-p">&lt;/</span><span class="tok-nt">form</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By&nbsp;default this would just try to&nbsp;post the&nbsp;form to&nbsp;the current <abbr>URL</abbr> in&nbsp;the address bar, to&nbsp;hijack this process and&nbsp;call a&nbsp;function on&nbsp;our component instead we use the&nbsp;<code>ngSubmit</code> directive (which comes from the&nbsp;<code>FormsModule</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">form</span> <span class="tok-err">(</span><span class="tok-na">ngSubmit</span><span class="tok-err">)="</span><span class="tok-na">onSubmit</span><span class="tok-err">()"</span><span class="tok-p">&gt;</span>...<span class="tok-p">&lt;/</span><span class="tok-nt">form</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an&nbsp;output event binding which calls a&nbsp;function on&nbsp;our component called <code>onSubmit</code> when the&nbsp;user clicks the&nbsp;submit button.</p>
+</div>
+<div class="paragraph">
+<p>However, we don’t want the&nbsp;form submitted when the&nbsp;form is invalid. We can easily disable the&nbsp;submit button when the&nbsp;form is invalid, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="html"><span></span><span class="tok-p">&lt;</span><span class="tok-nt">button</span> <span class="tok-na">type</span><span class="tok-o">=</span><span class="tok-s">"submit"</span> <span class="tok-na">class</span><span class="tok-o">=</span><span class="tok-s">"btn btn-primary"</span> <span class="tok-err">[</span><span class="tok-na">disabled</span><span class="tok-err">]="</span><span class="tok-na">f</span><span class="tok-err">.</span><span class="tok-na">invalid</span><span class="tok-err">"</span><span class="tok-p">&gt;</span>Submit<span class="tok-p">&lt;/</span><span class="tok-nt">button</span><span class="tok-p">&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resetting_the_form"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_resetting_the_form">Resetting the&nbsp;form</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In&nbsp;the model driven approach we reset the&nbsp;form by&nbsp;calling the&nbsp;function <code>reset()</code> on&nbsp;our <code>myform</code> model.</p>
+</div>
+<div class="paragraph">
+<p>We need to&nbsp;do the&nbsp;same in&nbsp;our template driven approach but we don’t have access to&nbsp;the underlying form model in&nbsp;our component. We only have access to&nbsp;it in&nbsp;our template via our local reference variable <code>f.form</code></p>
+</div>
+<div class="paragraph">
+<p>However, we can get a&nbsp;reference to&nbsp;the <code>ngForm</code> instance in&nbsp;our component code by&nbsp;using a&nbsp;<code>ViewChild</code> decorator which we covered in&nbsp;the section on&nbsp;components earlier on&nbsp;in this course.</p>
+</div>
+<div class="paragraph">
+<p>This decorator gives us a&nbsp;reference in&nbsp;our component to&nbsp;something in&nbsp;our template.</p>
+</div>
+<div class="paragraph">
+<p>First we create a&nbsp;property on&nbsp;our component to&nbsp;hold an&nbsp;instance of&nbsp;<code>NgForm</code>, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>form: any;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we import the&nbsp;<code>ViewChild</code> decorator from <code>@angular/core</code>, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>import { ViewChild } from '@angular/core';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally we decorate our property with the&nbsp;<code>ViewChild</code> decorator. We pass to&nbsp;<code>ViewChild</code> the&nbsp;<em>name</em> of&nbsp;the local reference variable we want to&nbsp;link to, like so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>@ViewChild('f') form: any;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And&nbsp;then in&nbsp;our <code>onSubmit()</code> function we can just call <code>form.reset()</code> like we did in&nbsp;the model driven approach.</p>
+</div>
+<div class="paragraph">
+<p>The&nbsp;full listing for&nbsp;our component is now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>class TemplateFormComponent {
+
+  model: Signup = new Signup();
+  @ViewChild('f') form: any;
+
+  langs: string[] = [
+    'English',
+    'French',
+    'German',
+  ];
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log("Form Submitted!");
+      this.form.reset();
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now when we submit the&nbsp;form it <em>blanks out</em> all the&nbsp;fields and&nbsp;also resets the&nbsp;states of&nbsp;the form controls so any validation styling and&nbsp;errors reset also to&nbsp;the original pristine condition.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_summary">Summary</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In&nbsp;this lecture we converted our model driven form into a&nbsp;template driven form.</p>
+</div>
+<div class="paragraph">
+<p>We learnt that the&nbsp;template driven form still uses the&nbsp;same classes as&nbsp;the model driven form but in&nbsp;the template drive approach the&nbsp;models are created by&nbsp;directives in&nbsp;the template instead of&nbsp;explicitly created on&nbsp;the component.</p>
+</div>
+<div class="paragraph">
+<p>The&nbsp;<code>ngForm</code> directive automatically attaches to&nbsp;<code>&lt;form&gt;</code> and&nbsp;creates a&nbsp;top level <code>FormGroup</code>.</p>
+</div>
+<div class="paragraph">
+<p>We learnt about the&nbsp;<code>?</code> elvis operator and&nbsp;how we can use it when some properties in&nbsp;a dot chain can be undefined or&nbsp;null.</p>
+</div>
+<div class="paragraph">
+<p>We learnt how to&nbsp;use the&nbsp;ngModel directive, how it creates the&nbsp;FormControl instance for&nbsp;us and&nbsp;how we can use it to&nbsp;implement two way data binding to&nbsp;a domain model on&nbsp;our component.</p>
+</div>
+<div class="paragraph">
+<p>We learnt how to&nbsp;use a&nbsp;domain model in&nbsp;Angular.</p>
+</div>
+<div class="paragraph">
+<p>We learnt how to&nbsp;implement validation in&nbsp;template driven forms as&nbsp;well as&nbsp;how to&nbsp;submit and&nbsp;reset a&nbsp;form.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_listing"><a href="https://codecraft.tv/courses/angular/forms/template-driven/#_listing">Listing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://plnkr.co/edit/f4Dj1ZPVJHe6kcuF3Bk2?p=preview" class="bare">http://plnkr.co/edit/f4Dj1<abbr>ZPVJH</abbr>e6kcuF3Bk2?p=preview</a></p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. script.ts</div>
+<div class="content">
+<pre class="pygments highlight"><span class="language-name"></span><a class="btn btn-sm btn-purple clipboard-copy" data-original-title="Copied!">Copy</a><code data-lang="typescript"><span></span>import {
+    NgModule,
+    Component,
+    OnInit,
+    ViewChild
+} from '@angular/core';
+import {
+    FormsModule,
+    FormGroup,
+    FormControl
+} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+class Signup {
+  constructor(public firstName: string = '',
+              public lastName: string = '',
+              public email: string = '',
+              public password: string = '',
+              public language: string = '') {
+  }
+}
+
+
+@Component({
+  selector: 'template-form',
+  template: `&lt;!--suppress ALL --&gt;
+&lt;form novalidate
+      (ngSubmit)="onSubmit()"
+      #f="ngForm"&gt;
+
+	&lt;fieldset ngModelGroup="name"&gt;
+		&lt;div class="form-group"
+		     [ngClass]="{
+        'has-danger': firstName.invalid &amp;&amp; (firstName.dirty || firstName.touched),
+        'has-success': firstName.valid &amp;&amp; (firstName.dirty || firstName.touched)
+   }"&gt;
+			&lt;label&gt;First Name&lt;/label&gt;
+			&lt;input type="text"
+			       class="form-control"
+			       name="firstName"
+			       [(ngModel)]="model.firstName"
+			       required
+			       #firstName="ngModel"&gt;
+			&lt;div class="form-control-feedback"
+			     *ngIf="firstName.errors &amp;&amp; (firstName.dirty || firstName.touched)"&gt;
+				&lt;p *ngIf="firstName.errors.required"&gt;First name is required&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;div class="form-group"
+		     [ngClass]="{
+        'has-danger': lastName.invalid &amp;&amp; (lastName.dirty || lastName.touched),
+        'has-success': lastName.valid &amp;&amp; (lastName.dirty || lastName.touched)
+   }"&gt;
+			&lt;label&gt;Last Name&lt;/label&gt;
+			&lt;input type="text"
+			       class="form-control"
+			       name="lastName"
+			       [(ngModel)]="model.lastName"
+			       required
+			       #lastName="ngModel"&gt;
+			&lt;div class="form-control-feedback"
+			     *ngIf="lastName.errors &amp;&amp; (lastName.dirty || lastName.touched)"&gt;
+				&lt;p *ngIf="lastName.errors.required"&gt;Last name is required&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/fieldset&gt;
+
+
+	&lt;div class="form-group"
+	     [ngClass]="{
+        'has-danger': email.invalid &amp;&amp; (email.dirty || email.touched),
+        'has-success': email.valid &amp;&amp; (email.dirty || email.touched)
+   }"&gt;
+		&lt;label&gt;Email&lt;/label&gt;
+		&lt;input type="email"
+		       class="form-control"
+		       name="email"
+		       [(ngModel)]="model.email"
+		       required
+		       pattern="[^ @]*@[^ @]*"
+		       #email="ngModel"&gt;
+		&lt;div class="form-control-feedback"
+		     *ngIf="email.errors &amp;&amp; (email.dirty || email.touched)"&gt;
+			&lt;p *ngIf="email.errors.required"&gt;Email is required&lt;/p&gt;
+			&lt;p *ngIf="email.errors.pattern"&gt;Email must contain at least the @ character&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+
+	&lt;div class="form-group"
+	     [ngClass]="{
+        'has-danger': password.invalid &amp;&amp; (password.dirty || password.touched),
+        'has-success': password.valid &amp;&amp; (password.dirty || password.touched)
+  }"&gt;
+		&lt;label&gt;Password&lt;/label&gt;
+		&lt;input type="password"
+		       class="form-control"
+		       name="password"
+		       [(ngModel)]="model.password"
+		       required
+		       minlength="8"
+		       #password="ngModel"&gt;
+		&lt;div class="form-control-feedback"
+		     *ngIf="password.errors &amp;&amp; (password.dirty || password.touched)"&gt;
+			&lt;p *ngIf="password.errors.required"&gt;Password is required&lt;/p&gt;
+			&lt;p *ngIf="password.errors.minlength"&gt;Password must be at least 8 characters long&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="form-group"&gt;
+		&lt;label&gt;Language&lt;/label&gt;
+		&lt;select class="form-control"
+		        name="language"
+		        [(ngModel)]="model.language"&gt;
+			&lt;option value=""&gt;Please select a language&lt;/option&gt;
+			&lt;option *ngFor="let lang of langs"
+			        [value]="lang"&gt;{{lang}}
+			&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt;
+
+	&lt;button type="submit"
+	        class="btn btn-primary"
+	        [disabled]="f.invalid"&gt;Submit
+	&lt;/button&gt;
+
+	&lt;pre&gt;{{f.value | json}}&lt;/pre&gt;
+&lt;/form&gt;
+`
+})
+class TemplateFormComponent {
+
+  model: Signup = new Signup();
+  @ViewChild('f') form: any;
+
+  langs: string[] = [
+    'English',
+    'French',
+    'German',
+  ];
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log("Form Submitted!");
+      this.form.reset();
+    }
+  }
+}
+
+@Component({
+  selector: 'app',
+  template: `&lt;template-form&gt;&lt;/template-form&gt;`
+})
+class AppComponent {
+}
+
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  declarations: [
+    AppComponent,
+    TemplateFormComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+})
+class AppModule {
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+      </div>
+
+      <hr>
+
+      <nav>
+        <ul class="pager">
+          <li class="previous">
+            <a href="https://codecraft.tv/courses/angular/forms/reactive-model-form/">Reactive Model Form</a>
+          </li>
+      
+          <li class="next">
+            <a href="https://codecraft.tv/courses/angular/forms/summary/">Wrapping Up</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="lecture-book" class="col-md-12">
+        <div class="row ebook">
+              <div class="col-md-6 text-right">
+                <h3>Learn Angular 5 For <strong class="text-primary">FREE</strong></h3>
+                <p>I've released my 700 page
+                  <a href="https://www.kickstarter.com/projects/366973035/angular2-from-zero-to-hero-online-course-and-ebook" target="_blank">Kick Starter funded
+                  </a>
+                   Angular 5 book for FREE
+                </p>
+                <p>
+                  <button class="btn btn-primary btn-lg" data-sumome-listbuilder-id="e0b48f43-c26f-411a-bb1a-4bba65cfc27c" role="button" data-sumome-trigger="true">Download Now
+                  </button>
+                </p>
+        
+              </div>
+        
+              <div class="col-md-6">
+                <img class="img-responsive" src="./Template Driven Forms • Forms • Angular 5_files/angular.ebook.w800.jpg" alt="">
+              </div>
+            </div>      </div>
+
+      <br>
+      <!-- Comments widget will be rendered in this element -->
+      <div id="disqus_thread"><iframe id="dsq-app9151" name="dsq-app9151" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Template Driven Forms • Forms • Angular 5_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 873px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+    </article>
+    <!-- END Main content -->
+
+
+  </div>
+
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <a id="scroll-up" href="https://codecraft.tv/courses/angular/forms/template-driven/#">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <p>Copyright © 2017 Daolrevo Ltd. All rights reserved</p>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <ul class="footer-menu">
+          <li>
+            <a href="https://codecraft.tv/">Home</a>
+          </li>
+          <li>
+            <a href="https://codecraft.tv/training/">Training</a>
+          </li>
+          <li>
+            <a href="https://codecraft.tv/speaking/">Speaking</a>
+          </li>
+          <li>
+            <a href="https://codecraft.tv/courses/">Courses</a>
+          </li>
+          <li>
+            <a href="https://codecraft.tv/terms/">Terms</a>
+          </li>
+          <li>
+            <a href="https://codecraft.tv/privacy/">Privacy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer><script data-cfasync="false" src="./Template Driven Forms • Forms • Angular 5_files/email-decode.min.js"></script><script src="./Template Driven Forms • Forms • Angular 5_files/player.js"></script>
+<script src="./Template Driven Forms • Forms • Angular 5_files/abtest.js"></script>
+<script async="" src="./Template Driven Forms • Forms • Angular 5_files/widgets.js" charset="utf-8"></script>
+        
+<script>
+  var apiBase = 'https://api.codecraft.tv';
+</script>
+<script src="./Template Driven Forms • Forms • Angular 5_files/code.min-bb657453a4a64b4c8aae940b74b2f14b.js"></script><iframe id="sumome-jquery-iframe" title="Sumo Hidden Content" style="display: none;"></iframe>
+<script src="./Template Driven Forms • Forms • Angular 5_files/angular.js"></script><a href="javascript:void(0);" title="Sumo" style="border-radius: 3px 0px 0px 3px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px; position: fixed; z-index: 2147483647; padding: 0px; width: 44px; height: 40px; text-indent: -10000px; opacity: 1; display: none !important; background-color: rgb(0, 115, 183);"><span style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Sumo</span><span style="display:block;width:40px;height:40px;background:white;margin-left:4px;-webkit-border-radius: 3px 0 0 3px;-moz-border-radius: 3px 0 0 3px;-ms-border-radius: 3px 0 0 3px;-o-border-radius: 3px 0 0 3px;border-radius: 3px 0 0 3px;background-repeat:no-repeat;background-position:8px 8px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxZDQ2MjI4YS03NWY2LTRkZTQtOGJjYy1hODc1NjRkMjYxYTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDQ3MUVFMDFFMjVDMTFFNjlFQjhBRjdGODU5MDJBMDUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDQ3MUVFMDBFMjVDMTFFNjlFQjhBRjdGODU5MDJBMDUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxZDQ2MjI4YS03NWY2LTRkZTQtOGJjYy1hODc1NjRkMjYxYTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MWQ0NjIyOGEtNzVmNi00ZGU0LThiY2MtYTg3NTY0ZDI2MWE1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8JtvywAAAKhQTFRFzOPxSJvLA3W4Mo7FBna5w97u8vj7EHy8a67VhbzdsdTpVaLPh73d9/v9C3m6QZfJbq/WXKbR3u32JIfB3ez1KorDir/eBHW4+/3+rtPoZarUG4K/LIvDDnu7ocvkf7nbdrTY9fr8E328WKPQO5PITJ3MPpXJstXptdbq+Pv9cbHXaq3VU6HOkMLgnMnjDHq62uv1/P3+6/T53Oz1cLDX/f7+AHO3////ptOZ5QAAADh0Uk5T/////////////////////////////////////////////////////////////////////////wA7XBHKAAAAmUlEQVR42sSRRxLCMAxFRSq9907ovebr/jdDMWYGxmZL3sIqbyFbJv4B/VlkVlerKALTD3G46Mx3AOR1UZ/TsDxW6W0gfYRNVfTCFu2AWpAMgMItMW+zQJU2UjWI29D0+e5KWNPMk+A9Om+B/UgOJyCuwMJCrpuziYkIsglfRByZ/XM3eXnBFEu1kpMpjq9dxQYp/OAXTwEGAB7Rc1xVnPemAAAAAElFTkSuQmCC);"></span></a><iframe style="display: none;"></iframe>
+<script src="./Template Driven Forms • Forms • Angular 5_files/app-3f08a33bac771a9ec95681036e3bc506.js"></script>
+  <script type="text/javascript">
+window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+heap.load("1761016128");
+</script>
+<script type="text/javascript">
+  heap.track('Landed Lecture', {
+    course: "Angular 5",
+    section: "Forms",
+    title: "Template Driven Forms"
+  });
+</script>
+
+    <!-- Disqus widget script -->
+    <script>
+      var disqus_config = function() {
+        this.page.url = 'http://codecraft.tv/courses/angular/forms/template-driven/';
+        this.page.identifier = 'template_driven_forms';
+        this.page.title = 'Template Driven Forms';
+      };
+
+      (function(d) {
+        var s = d.createElement('script');
+        s.src = '//codecraft-tv.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })(document);
+    </script>
+    <!-- End Disqus widget script -->
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Template Driven Forms • Forms • Angular 5_files/widget_iframe.36c0c29c73929bf937f4c70adb1a29e4.html" style="display: none;"></iframe><div style="position:fixed;top:0;left:0;overflow:hidden;"><label for="focus_retriever" style="position:absolute;left:-1000px;">Focus Retriever</label><input style="position:absolute;left:-1000px;" type="text" name="focus_retriever" value="" id="focus_retriever" readonly="true"></div><iframe style="display: none;"></iframe></body></html>

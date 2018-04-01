@@ -11,6 +11,13 @@ import { ProfilComponent } from './profil/profil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IpmComponent } from './vente/ipm/ipm.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
+import { ParametrecompteComponent } from './parametrecompte/parametrecompte.component';
+import { AssistantComponent} from './assistant/assistant.component';
+import { ClientComponent} from './client/client.component';
+import { ParticulierComponent} from './particulier/particulier.component';
+import { IpmassComponent} from './ipm/ipm.component';
+import { StockComponent } from './stock/stock.component';
+
 //declaration des routes de navigatoin
 
 const appRoutes: Routes = [
@@ -27,6 +34,16 @@ const appRoutes: Routes = [
     { path:'histoire',component:HistoireComponent },
     { path:'profil',component:ProfilComponent },
     { path:'dashboard',component:DashboardComponent },
+    { path:'assistant',component:AssistantComponent,
+                   children:[
+                   {path:'Vente',component:VenteComponent},
+                   {path:'parametrecompte',component:ParametrecompteComponent},
+                   {path:'client',component:ClientComponent},
+                   {path:'particulier',component:ParticulierComponent},
+                   {path:'ipm',component:IpmassComponent},
+                   {path:'stock',component:StockComponent},
+                   ]},
+     
     { path: '**', redirectTo: '' }
 ];
 

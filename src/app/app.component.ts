@@ -9,7 +9,7 @@ import {Router,CanActivate} from '@angular/router';
 export class AppComponent {
   title = 'Supert Cloudpharma';
   constructor(private router:Router){
-     this.router.navigate(['/login']);
+     this.router.navigate(['/assistant']);
   }
   
  

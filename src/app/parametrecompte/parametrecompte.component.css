@@ -1,0 +1,21 @@
+b:hover{
+    cursor: pointer;
+    background-color:white;
+    color:green !important;
+    width:100% !important;
+    display:block;
+    border:2px solid green;
+    border-radius:20px;
+    height:50px;
+    padding-top:10px;
+  }
+ul li{
+    border:2px solid white;
+    background-color:green;
+    border-radius:20px;
+    text-align:center;
+    border:2px solid white;
+}
+li a{
+    color:white;
+}

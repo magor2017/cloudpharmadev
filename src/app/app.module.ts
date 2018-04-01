@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { FormsModule,NgForm } from '@angular/forms';
 
 /*********************************************************************************
  *             Modules
@@ -23,10 +24,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilComponent } from './profil/profil.component';
 import { IpmComponent } from './vente/ipm/ipm.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
+import { AssistantComponent} from './assistant/assistant.component';
+import { ParametrecompteComponent } from './parametrecompte/parametrecompte.component';
+import { ClientComponent } from './client/client.component';
+import { ParticulierComponent } from './particulier/particulier.component';
+import { IpmassComponent } from './ipm/ipm.component';
+import { StockComponent } from './stock/stock.component';
+import { FormsModule } from '@angular/forms';
 
 /*********************************************************************************
  *           services
  ***********************************************************************************/
+ import { ClientService } from './services/client.service.ts';
 
 @NgModule({
   declarations: [
@@ -40,16 +49,25 @@ import { AnnulationComponent } from './vente/annulation/annulation.component';
     DashboardComponent,
     ProfilComponent,
     IpmComponent,
-    AnnulationComponent
+    AnnulationComponent,
+    AssistantComponent,
+    ParametrecompteComponent,
+    ClientComponent,
+    ParticulierComponent,
+    IpmassComponent,
+    StockComponent,
   ],
   imports: [
     BrowserModule,
     Ng2SmartTableModule,
     Routing,
     NgPipesModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+     ClientService,
+     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

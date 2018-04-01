@@ -1,0 +1,26 @@
+<div class="row" style="margin-bottom:10px">
+	<div class="col-lg-10">
+		<p>Assstant : ko kou mane la baye</p>
+	</div>
+    <div class="col-lg-2">
+        <button class="btn btn-danger">deconnexion</button>   
+    </div>
+   
+</div>
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+		<ul class="list-group">
+			<li class="list-item"><a>dashboard</a></li>
+			<li class="list-item"><a [routerLink]="['/assistant','Vente']">vente</a></li>
+			<li class="list-item"><a [routerLink]="['/assistant','stock']" >Gestion Du Stock</a></li>
+			<li class="list-item"><a [routerLink]="['/assistant','parametrecompte']">Parametre des Comptes</a></li>
+			<li class="list-item"><a [routerLink]="['/assistant','client']">clients</a></li>
+			
+		</ul>
+	</div>
+	<div class="col-lg-8 col-md-8 col-xs-8 col-sm-8">
+		<router-outlet></router-outlet>
+	</div>
+</div>
+  
+

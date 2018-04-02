@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {NgPipesModule} from 'ngx-pipes';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 /*********************************************************************************
  *             Components
  ***********************************************************************************/
@@ -23,6 +24,7 @@ import { HistoireComponent } from './histoire/histoire.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilComponent } from './profil/profil.component';
 import { IpmComponent } from './vente/ipm/ipm.component';
+import { DirecteComponent } from './vente/directe/directe.component';
 import { AnnulationComponent } from './vente/annulation/annulation.component';
 import { AssistantComponent} from './assistant/assistant.component';
 import { ParametrecompteComponent } from './parametrecompte/parametrecompte.component';
@@ -30,7 +32,11 @@ import { ClientComponent } from './client/client.component';
 import { ParticulierComponent } from './particulier/particulier.component';
 import { IpmassComponent } from './ipm/ipm.component';
 import { StockComponent } from './stock/stock.component';
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
+import { AssuranceComponent } from './vente/assurance/assurance.component';
+import { BonComponent } from './vente/bon/bon.component';
+import { HeroService } from './services/hero.service';
+
 
 /*********************************************************************************
  *           services
@@ -56,6 +62,9 @@ import { FormsModule } from '@angular/forms';
     ParticulierComponent,
     IpmassComponent,
     StockComponent,
+    DirecteComponent,
+    AssuranceComponent,
+    BonComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +76,9 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
      ClientService,
+     HeroService,
      ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

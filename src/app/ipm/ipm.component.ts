@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ClientService } from '../services/client.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ipm',
   templateUrl: './ipm.component.html',
   styleUrls: ['./ipm.component.css']
 })
+
 export class IpmassComponent {
   title = 'Super cloudpharma accueil';
    modal:BsModalRef;
@@ -50,12 +52,14 @@ export class IpmassComponent {
   }
   
    modalclient(){
-   if(this.nb=="1"){
-     this.enregistrer_client();
-     this.nb="0";
-   }
-   if(this.nb=="2"){
-     this.modifierClient();
-     this.nb="0";
-   }
+	   if(this.nb=="1"){
+		 this.enregistrer_client();
+		 this.nb="0";
+	   }
+	   if(this.nb=="2"){
+		 this.modifierClient();
+		 this.nb="0";
+	   }
+
+  }
 }

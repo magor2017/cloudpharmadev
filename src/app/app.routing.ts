@@ -17,6 +17,7 @@ import { ClientComponent} from './client/client.component';
 import { ParticulierComponent} from './particulier/particulier.component';
 import { IpmassComponent} from './ipm/ipm.component';
 import { StockComponent } from './stock/stock.component';
+import { DirecteComponent } from './vente/directe/directe.component';
 
 //declaration des routes de navigatoin
 
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     { path:'vente',
                     component: VenteComponent,
                     children :[
+                        { path:'directe', component: DirecteComponent},
                         { path:'ipm', component: IpmComponent},
                         { path:'ipm', component: AnnulationComponent}
                     ] 

@@ -18,14 +18,14 @@
         </div>
         <div class="row" style="margin-top:0px;" *ngIf="rechercheGroupe == true">
             <ul style="position:absolute; background-color:blue; z-index:2;" class="col-lg-11">
-                <li  *ngFor="let groupe of  goupes | filterBy: ['designation']: changerMotifGoup " ><a (click)="nouveauGroupe($event)" id=' "id: {{ groupe.id }} ,"designation": "{{ groupe.designation }}"  , "description" : "{{ groupe.description }}" '>{{ groupe.designation }}</a></li>
+                <li  *ngFor="let groupe of  goupes | filterBy: ['designation','matricule','description']: changerMotifGoup " ><a (click)="nouveauGroupe($event)" id=' "id: {{ groupe.id }} ,"designation": "{{ groupe.designation }}"  , "description" : "{{ groupe.description }}" '>{{ groupe.designation }}</a></li>
             </ul>
        </div>
         <div class="input-group input-group-sm"  style="width:100%; border: 1px solid rgba(255,255,255,0.1);">
-          <input class="input-sm" type="text" name="" id="matricule" placeholder="metricule" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="matricule">
-          <input class="input-sm" type="text" name="" id="designation" placeholder="designation" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="designation">
-          <input class="input-sm" type="text" name="" id="description" placeholder="description" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="description">
-      </div>
+              <input class="input-sm" type="text" name="" id="matricule" placeholder="metricule" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="matricule">
+              <input class="input-sm" type="text" name="" id="designation" placeholder="designation" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="designation">
+              <input class="input-sm" type="text" name="" id="description" placeholder="description" style="margin-left:1rem;margin-top:1rem;" [(ngModel)]="description">
+        </div>
     </div>
 
 </div>

@@ -105,7 +105,7 @@ changerecherche(event){
     }
     
 }
-  prixtotal():string{
+  prixtotal(){
    let prixt=0;
     for(let i = 0 ; i < this.medicaments.length ; i ++){
        prixt+=this.medicaments[i].prix*this.medicaments[i].quantite;
@@ -138,17 +138,19 @@ changerecherche(event){
     
     return false;
   }
+  
   annuler_vente(){
    this.medicaments=[];
     this.modalRef.hide();
   }
+
   valider_vente(){
     
     let params="params="+JSON.stringify(this.medicaments);
     let link="http://127.0.0.1/allstockBackEnd/index.php/vente/directe";
       this.http.post(link,params,{headers:this.headers}).subscribe(response => {
-     // let data=JSON.parse(response.json());
-      let data=JSON.parse(response._body);
+      let data=JSON.parse(response.json());
+      //let data=JSON.parse(response._body);
       console.log(data);
         if(data.code=="ok"){
           this.modalRef.hide();

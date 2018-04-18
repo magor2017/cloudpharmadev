@@ -36,12 +36,12 @@ import { StockComponent } from './stock/stock.component';
 import { AssuranceComponent } from './vente/assurance/assurance.component';
 import { BonComponent } from './vente/bon/bon.component';
 import { HeroService } from './services/hero.service';
+import { ClientService } from './services/client.service';
 
 
 /*********************************************************************************
  *           services
  ***********************************************************************************/
- import { ClientService } from './services/client.service.ts';
 
 @NgModule({
   declarations: [

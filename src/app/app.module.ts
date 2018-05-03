@@ -41,7 +41,8 @@ import { HeroService } from './services/hero.service';
 /*********************************************************************************
  *           services
  ***********************************************************************************/
- import { ClientService } from './services/client.service.ts';
+ import { ClientService } from './services/client.service';
+ import { StockService } from './services/stock.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { HeroService } from './services/hero.service';
   providers: [
      ClientService,
      HeroService,
+     StockService,
      ],
   
   bootstrap: [AppComponent]

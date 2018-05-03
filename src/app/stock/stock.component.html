@@ -3,18 +3,18 @@
 	<button class="btn btn-success" (click)="listeproduit()" >liste des produits</button>
 	<button class="btn btn-success" (click)="perempt()" >peremption</button>
 	<button class="btn btn-success"  (click)="showmodalcaissier(templatemodif)">modifier produit</button>
-	<button class="btn btn-success" (click)="affichebl()">bl</button>
+	<button class="btn btn-success" (click)="affichebl()">reapprovisionement</button>
 	<button class="btn btn-success" >reappro</button>
 </div>
 <div>
 	<div *ngIf="listproduit">
 		<div class="row" style="margin:10px">
-			<div  class="col-lg-offset-2 col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="tout les produits" />
-			</div>
-			<div style="margin-left:20px" class="col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="par rayon" />
-			</div>
+			<select>
+				<option>--rayon--</option>
+				<option>r1</option>
+				<option>r2</option>
+				<option>r3</option>
+			</select>
 		</div>
 		<table class="table table-striped table-condensed">
 			<tr>
@@ -46,11 +46,23 @@
 	<div *ngIf="bl">
 		<div class="row" style="margin:10px">
 			<div  class="col-lg-offset-2 col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="reapro" />
+			 <input type="button" class="btn btn-primary" value="Nouveau BL" />
 			</div>
 			<div style="margin-left:20px" class="col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="rechercher bl" />
+			 <input type="button" class="btn btn-primary" value="Recherche BL" />
 			</div>
+		</div>
+		<div>
+			<form class="form-inline">
+				<label >Fournisseur</label>
+				<select style="margin-left:2em;margin-right:2em">
+					<option>bbs</option>
+					<option>cloudpharma</option>
+					<option>rastapharm</option>
+				</select>
+				<label>Code BL</label>
+				<input type="text" />
+			</form>
 		</div>
 	</div>
     <router-outlet>

@@ -22,23 +22,27 @@ export class DirecteComponent implements OnInit {
   changerMotif = null;
   p:string=undefined;
   qt:string=undefined;
+  prix:string=undefined;
+  idProduit:string=undefined;
+  idGroup:string=undefined;
 
-  medicamentsSave  = [
+ /* medicamentsSave  = [
     {id:1,medicament:'HELICOCIN 750/500MG CP B/42',prix:"5532",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:2,medicament:'FLOXAPEN GELU 500MG B20',prix:"3925",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:3,medicament:'ZAMUDOL LP 100MG GELULES B/10',prix:"5532",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:4,medicament:'STAPHYPEN 500MG GELULES B/20',prix:"3151",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:5,medicament:'IXPRIM 37,5MG/325MG CPR B/20',prix:"3925",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"},
     {id:6,medicament:'GENES GROSSESSE CPR EFF BT12',prix:"3011",quantite:"2",type:"vente directe",modePayement:'cache',assurance:"assurance 1"}
-  ]
+  ]*/
+  medicamentsSave=[];
 
-  medicaments = []
+  medicaments = [];
 
   constructor(private router:Router, private modalService: BsModalService,private http:Http){
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
 
-  ngOnInit() {
+  ngOnInit() {   
   }
 
   toutValider(bodyTable){
@@ -95,14 +99,32 @@ change(){
 }
 
 changerecherche(event){
+     let params="params="+JSON.stringify({produit:(event.target).value});
+    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/recherchproduit";
     if(((event.target).value).trim() != ''){
+    this.http.post(link,params,{headers:this.headers}).map(res =>res.json()).subscribe(response => {
+          this.medicamentsSave=response;
+          console.log(this.medicamentsSave);
+           if(this.medicamentsSave.length!=0){
+				this.rechercheMedoc = true;
+				this.changerMotif  = (event.target).value;
+           }else {
+				this.rechercheMedoc = false;
+				this.changerMotif = null;
+          }
+       }); 
+      }else{
+          this.rechercheMedoc = false;
+          this.changerMotif = null;
+      }
+   /* if(((event.target).value).trim() != ''){
         this.rechercheMedoc = true;
         this.changerMotif  = (event.target).value;
     }
     else {
       this.rechercheMedoc = false;
       this.changerMotif = null;
-    }
+    }*/
     
 }
   prixtotal():string{
@@ -110,7 +132,7 @@ changerecherche(event){
     for(let i = 0 ; i < this.medicaments.length ; i ++){
        prixt+=this.medicaments[i].prix*this.medicaments[i].quantite;
     }
-   return prixt;      
+   return prixt.toString();      
  }
 
   nouveauMedoc(produit:any){
@@ -121,17 +143,24 @@ changerecherche(event){
   ajout(){
    console.log(this.isProduit(this.p));
   if(parseInt(this.qt)>=1 && this.isProduit(this.p)){
-    let p1={id:1,medicament:this.p,prix:"5532",quantite:this.qt,type:"vente directe",modePayement:'cache',assurance:"assurance 1"};
+    let p1={id:1,medicament:this.p,prix:this.prix,quantite:this.qt,idProduit:this.idProduit,idGroup:this.idGroup};
     this.medicaments.push(p1);
     this.rechercheMedoc = false;
     this.p=undefined;
     this.qt=undefined;
+    this.prix=undefined;
+    this.idProduit=undefined;
+    this.idGroup=undefined;
     }
    
   }
+  
   isProduit(p:string):boolean{
     for(let i=0;i<this.medicamentsSave.length;i++){
        if(this.medicamentsSave[i].medicament.indexOf(p)!=-1){
+         this.prix=this.medicamentsSave[i].prix;
+         this.idGroup=this.medicamentsSave[i].idGroupe;
+         this.idProduit=this.medicamentsSave[i].idProduit;
          return true;
        }
     }
@@ -144,17 +173,17 @@ changerecherche(event){
   }
   valider_vente(){
     
-    let params="params="+JSON.stringify(this.medicaments);
+    let params="params="+JSON.stringify({medoc:JSON.stringify(this.medicaments),type:'directe',montant:this.prixtotal()});
     let link="http://127.0.0.1/allstockBackEnd/index.php/vente/directe";
       this.http.post(link,params,{headers:this.headers}).subscribe(response => {
      // let data=JSON.parse(response.json());
-      let data=JSON.parse(response._body);
-      console.log(data);
-        if(data.code=="ok"){
+      //let data=JSON.parse(response._body);
+     // console.log(response);
+        //if(data.code=="ok"){
           this.modalRef.hide();
           console.log(response);
           this.medicaments=[];
-          }
+         // }
        }); 
   }
 // calculePrixTotale (event){

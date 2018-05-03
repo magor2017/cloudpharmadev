@@ -10,12 +10,13 @@
 								<fieldset>
 										<legend style="text-align:center;color:green;font-size:2em"><img src="./../../assets/login.jpeg" alt="" style="height:5rem; margin-bottom:1rem;"></legend>
 										<div class="form-group">
-												<input type="text" class="form-control" placeholder="identifiant"/>
+												<input name="identifiant" [(ngModel)]="identifiant" type="text" class="form-control" placeholder="identifiant"/>
 										</div>
 										<div class="form-group">
-												<input type="password" class="form-control" placeholder="mot de passe"/>
+												<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="mot de passe"/>
 										</div>
-										<input type="button" [routerLink]="['/caissier']" value="valider" class="btn btn-success" style="border-radius:2rem; float:right;" />
+										<div class="alert alert-danger" *ngIf="error">Identifiant ou mot de pass incorrect</div>
+										<input type="button" (click)="connection()" value="valider" class="btn btn-success" style="border-radius:2rem; float:right;" />
 								</fieldset>
 						</form>
 				</div>

@@ -127,7 +127,7 @@ changerecherche(event){
     }*/
     
 }
-  prixtotal():string{
+  prixtotal(){
    let prixt=0;
     for(let i = 0 ; i < this.medicaments.length ; i ++){
        prixt+=this.medicaments[i].prix*this.medicaments[i].quantite;
@@ -167,10 +167,12 @@ changerecherche(event){
     
     return false;
   }
+  
   annuler_vente(){
    this.medicaments=[];
     this.modalRef.hide();
   }
+
   valider_vente(){
     
     let params="params="+JSON.stringify({medoc:JSON.stringify(this.medicaments),type:'directe',montant:this.prixtotal()});
@@ -180,12 +182,18 @@ changerecherche(event){
       //let data=JSON.parse(response._body);
      // console.log(response);
         //if(data.code=="ok"){
+
+      let data=JSON.parse(response.json());
+      //let data=JSON.parse(response._body);
+      console.log(data);
+        if(data.code=="ok"){
           this.modalRef.hide();
           console.log(response);
           this.medicaments=[];
          // }
        }); 
   }
+ }
 // calculePrixTotale (event){
 //      let target = event.target;
 //      let q = target.value;

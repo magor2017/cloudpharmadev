@@ -11,6 +11,7 @@ import { StockService } from '../services/stock.service';
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent {
+
   title = 'Super cloudpharma accueil';
   modal:BsModalRef;
   nom:string;
@@ -26,30 +27,148 @@ export class StockComponent {
   bl:boolean=false;
   produits=[{nom:'mango bakhal',quantite:10,date:'8/12/2018'},{nom:'mafe yape',quantite:25,date:'8/12/2018'},{nom:'soplé',quantite:50,date:'8/12/2018'}];
   constructor(private router:Router,private modalService: BsModalService,private stockService:StockService){}
+
+
+  section = "nouveau produit";
+
+ 
+  produits=[
+    {nom:'mango bakhal',quantite:10,date:'8/12/2018'}
+    ,{nom:'mafe yape',quantite:25,date:'8/12/2018'},
+    {nom:'soplé',quantite:50,date:'8/12/2018'}
+  ];
+
+  classColor=["success","danger","info","warning","active"];
+  classColorIterator = 0;
+
+  listeDesProduitsTab=[
+      {
+        nom: "medoc1",
+        tva: "tva1",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      },
+
+      {
+        nom: "medoc2",
+        tva: "tva2",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      },
+
+      {
+        nom: "medoc3",
+        tva: "tva3",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      }
+  ];
+
+  nouveauxProduitsTab=[
+     {
+        nom: "medoc1",
+        tva: "tva1",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+     },
+
+     {
+        nom: "medoc2",
+        tva: "tva2",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+     },
+
+     {
+        nom: "medoc3",
+        tva: "tva3",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+     }
+  ];
+
+  modifierProduisTab=[
+      {
+        nom: "medoc1",
+        tva: "tva1",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      },
+
+      {
+        nom: "medoc2",
+        tva: "tva2",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      },
+
+      {
+        nom: "medoc3",
+        tva: "tva3",
+        prixSession: "prix",
+        prixVente: "prix",
+        quantite: "quantite",
+        peremption: "quantite",
+        date:  "8/12/2018"
+      }
+ ];
+  
+ // constructor(private router:Router,private modalService: BsModalService){}
+
   showmodalcaissier(template:any){
      this.modal = this.modalService.show(template);
   }
+
   toparticulier(){
     this.router.navigate(['/assistant','particulier']);
   }
+
   chercher(){
     this.formmodif=true;
   }
+
   listeproduit(){
      this.listproduit=true;
      this.peremp=false;
      this.bl=false;
   }
+
   perempt(){
      this.listproduit=false;
      this.bl=false;
      this.peremp=true;
   }
+
   affichebl(){
      this.listproduit=false;
      this.peremp=false;
      this.bl=true;
   }
+
   enregistrer_nouveau_produit(){
    console.log("mag");
    let data={prixs:this.prixs,prixv:this.prixv,quantite:this.quantite,tva:this.tva,peremption:this.peremption};
@@ -60,6 +179,7 @@ export class StockComponent {
    this.modal.hide();
      
   }
+
   annuler_enregistrement_nouveau_produit(){
     this.prixs=undefined;
     this.prixv=undefined;
@@ -68,4 +188,44 @@ export class StockComponent {
     this.peremption=undefined;
     this.modal.hide();
   }
+
+  ajouterNouveauxProduit(){
+
+  }
+
+  supprimerNouveauxProduit(){
+
+  }
+
+
+  ajouterListeDesProduits(){
+
+  }
+
+  supprimerListeDesProduit(){
+
+  }
+
+
+  ajouterModifierProdui(){
+
+  }
+
+  supprimerModifierProdui(){
+
+  }
+
+  nouveauxProduits (){
+
+  }
+
+  modifierProduis (){
+
+  }
+
+  listeDesProduits (){
+
+  }
+
+
 }

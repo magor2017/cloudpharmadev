@@ -18,13 +18,8 @@
 <!--<div class="row">
 	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='nouveau produit')?true:false)}" (click)="section='nouveau produit'" >nouveau produit</button> 
 	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='liste des produits')?true:false)}" [ngStyle]="{'margin-left': '0.7rem'}" (click)="section='liste des produits'" >liste des produits</button>
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='peremption')?true:false)}" [ngStyle]="{'margin-left': '0.7rem'}" (click)="section='peremption'" >peremption</button>
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='modifier produit')?true:false)}"  [ngStyle]="{'margin-left': '0.7rem'}" (click)="section='modifier produit'">modifier produit</button> 
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='bl')?true:false)}" [ngStyle]="{'margin-left': '0.7rem'}" (click)="section='bl'">bl</button>
 	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='reaprovisionnement')?true:false)}"[ngStyle]="{'margin-left': '0.7rem'}"  (click)="section='reaprovisionnement'">reappro</button> 
-
 </div>
-
 <div class="row" [ngStyle]="{'min-height': '-webkit-fill-available'}">
 
 	<div class="col-lg-12" *ngIf="section==='nouveau produit'" style="margin-top:2rem;">
@@ -33,11 +28,16 @@
 				
 			</div>
 			<div class="col-lg-2">
+<<<<<<< HEAD
 				<button [ngClass]="{btn:true,'btn-sm':true,'btn-success':true,activeMenu:true}" class="btn btn-success" (click)="showmodalcaissier(template)" >nouveau produit</button>
 			</div>-->
+
+				<button [ngClass]="{btn:true,'btn-sm':true,'btn-success':true,activeMenu:true}" class="btn btn-success" (click)="this.reinicilized(); openModal(templateNouveauProduit);" >nouveau produit</button>
+			</div>
+
 		</div>
 		<div class="row" [ngStyle]="{'margin-top': '2rem'}">
-			<table class="table">
+			<table class="table table-sm">
 				<thead>
 					<tr>
 						<th>Nom</th>
@@ -46,52 +46,53 @@
 						<th>prix vente</th>
 						<th>Quantite</th>
 						<th>Peremption</th>
+						<th>annuler</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let prod of produitsAjout" >
+					<tr *ngFor="let prod of nouveauProduisTab; let i=index" >
 						<td>{{prod.nom}}</td>
 						<td>{{prod.tva}}</td>
 						<td>{{prod.prixSession}}</td>
 						<td>{{prod.prixVente}}</td>
 						<td>{{prod.quantite}}</td>
 						<td>{{prod.peremption}}</td>
+						<td>
+							<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="this.action='nouveau';annulerProduit(i)">annuler</button>
+						</td>
+
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="showmodalcaissier(template)" >Valider</button>
-   </div>
+		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
+   	</div>
+
 	<div class="col-lg-12" *ngIf="section==='liste des produits'">
 		<div >
-			<div class="row" [ngStyle]="{'margin-top':'2rem', 'text-align':'center'}">
-				<div  [ngClass]="{'col-lg-offset-2':true, 'col-lg-2':true, 'col-md-2':true}">
-					<input type="button" [ngClass]="{btn:true,'btn-sm':true ,'btn-primary':true}" value="tout les produits" />
-				</div>
-				<div [ngStyle]="{'margin-left':'0.7rem'}" [ngClass]="{'col-lg-2':true, 'col-md-2':true}">
-					<input type="button" [ngClass]="{btn:true,'btn-sm':true ,'btn-primary':true}" value="par rayon" />
-				</div>
-			</div>
-			<table class="table table-striped table-condensed" [ngStyle]="{'margin-top':'2rem'}">
+			<table class="table table-striped table-condensed table-sm" [ngStyle]="{'margin-top':'2rem'}">
 				<tr>
 					<th>produit</th>
 					<th>quantite</th>
 					<th>date peremption</th>
+					<th>Modifier</th>
+					<th>Supprimer</th>
 				</tr>
-				<tr *ngFor="let produit of produits">
+				<tr *ngFor="let produit of listeDesProduitsTab; let i=index">
 					<td>{{produit.nom}}</td>
 					<td>{{produit.quantite}}</td>
 					<td>{{produit.date}}</td>
+					<td>
+						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i); openModal(templatemodifierPorduit)">Modifier</button>
+					</td>
+					<td>
+						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i);openModal(templatesupprimerProduit);">Supprimer</button>
+					</td>
 				</tr>
 			</table>
 		</div>
+		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
 	</div>
-	
-	<div class="col-lg-12" *ngIf="section==='modifier produit'" >
-		<div class="row" [ngStyle]="{'margin-top':'2rem', 'text-align':'center'}">
-			<button [ngClass]="{btn:true, 'btn-success':true,'btn-sm':true}"  (click)="showmodalcaissier(templatemodif)">modifier produit</button>
-		</div>
-		<div class="row">
 
 		</div>
 	</div>
@@ -103,25 +104,45 @@
 			<div style="margin-left:20px" class="col-lg-2 col-md-2">
 			 <input type="button" class="btn btn-primary" value="Recherche BL" />
 	
+
 	<div class="col-lg-12" *ngIf="section==='reaprovisionnement'">
-	
-	</div>
-	
-	<div class="col-lg-12" *ngIf="section==='peremption'" [ngStyle]="{'margin-top': '2rem'}">
-		<div class="row" >
-			<table class="table table-striped table-condensed">
+		<div class="row">
+			<form class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-4">
+						<label>Fournisseur</label>
+						<input type="text" [(ngModel)]="founisseur"  name="founisseur" class="form-control">		
+					</div>
+					<div class="col-lg-4">
+						<label>Code Bl</label>
+						<input type="text" [(ngModel)]="bl" name="prixs" class="form-control">		
+					</div>
+					<div class="col-lg-4">
+						<label>peremtion</label>
+						<input type="text" [(ngModel)]="date" name="date" class="form-control">		
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<table class="table table-striped table-condensed table-sm" [ngStyle]="{'margin-top':'2rem'}">
 				<tr>
 					<th>produit</th>
 					<th>quantite</th>
 					<th>date peremption</th>
+					<th>Reaprovisionner</th>
 				</tr>
-				<tr *ngFor="let produit of produits">
+				<tr *ngFor="let produit of listeDesProduitsTab; let i=index">
 					<td>{{produit.nom}}</td>
 					<td>{{produit.quantite}}</td>
 					<td>{{produit.date}}</td>
+					<td>
+						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i); openModal(templateReapro)">reapro</button>
+					</td>
 				</tr>
 			</table>
 		</div>
+
 	</div>
 	
 	<div class="col-lg-12" *ngIf="section==='bl'">
@@ -147,115 +168,322 @@
 				<input type="text" />
 			</form>
 		</div>
+
+		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
+
 	</div>
 
 	<!-- Routing tags -->
 	<router-outlet></router-outlet>
-
 </div>
 <div class="row">
-	<ng-template #template>
-		<div class="modal-header">
-			<h4 class="modal-title pull-left">Modal</h4>
-			<button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
-			<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<form>
-				<div class="form-group">
-					<label>nom produit</label>
-					<input type="text" [(ngModel)]="nom"  name="nom" class="form-control">
 
-				</div>
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3">
-						<label>tva</label>
-					</div>
-					<div class="col-lg-3 col-md-3">
-						<select [(ngModel)]="tva" name="tva">
-							<option value="oui">oui</option>
-							<option value="non" selected>non</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label>prix session</label>
-					<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>prix de vente</label>
-					<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>quantite</label>
-					<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>peremtion</label>
-					<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
-				</div>
-			</form>
-			<button class="btn btn-warning btn-sm" (click)="enregistrer_nouveau_produit()"  >valider</button>
-			<button class="btn btn-primary btn-sm" (click)="annuler_enregistrement_nouveau_produit()"  >annuler</button>
-		</div>
-	</ng-template>
+<!-- ......................................................................
+							Modals
+ .........................................................................-->
+ 
+ <!--++++++++++++++++++++++
+			Modifier Produits
+++++++++++++++++++++++++++-->
+<ng-template #templatemodifierPorduit>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Modification de produits</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label>nom produit</label>
+				<input type="text" [(ngModel)]="nom"  name="nom" class="form-control">
 
-	<ng-template #templatemodif>
-
-			<div class="modal-header">
-				<h4 class="modal-title pull-left">Modal</h4>
-				<button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
-					<span aria-hidden="true">&times;</span>
-				</button>
 			</div>
-
-			<div class="modal-body">
-				<form class="form-inline">
-					<input type="text" name="chercher" (ngModel)="chercher" class="form-control" />
-					<input type="button" style="margin-left:20px" class="btn btn-success btn-sm form-control" (click)="chercher()" value="chercher"  />
-				</form>
-				 <br />
-				<form *ngIf="formmodif">
-					<div class="form-group">
-						<label>nom produit</label>
-						<input type="text" (ngModel)="nom" name="nom" class="form-control">
-					</div>
-					<div>
-						<label>tva</label>
-						<div>
-							<label>oui</label>
-							<input type="radio" [(ngModel)]="tve" name="tva" />
-						</div>
-						<div>
-							<label>non</label>
-							<input type="radio" [(ngModel)]="tva"  name="tva" checked />
-						</div>
-					</div>
-					<div class="form-group">
-						<label>prix session</label>
-						<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>prix de vente</label>
-						<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>quantite</label>
-						<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>peremtion</label>
-						<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
-					</div>
-				</form>
-				<button class="btn btn-warning btn-sm"  >valider</button>
-				<button class="btn btn-primary btn-sm"  >annuler</button>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<label>tva</label>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<select [(ngModel)]="tva" name="tva">
+						<option value="oui">oui</option>
+						<option value="non" selected>non</option>
+					</select>
+				</div>
 			</div>
-	</ng-template>
+			<div class="form-group">
+				<label>prix session</label>
+				<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>prix de vente</label>
+				<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>quantite</label>
+				<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>peremtion</label>
+				<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
+			</div>
+		</form>
+		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
+		<button class="btn btn-primary btn-sm" (click)="Validermodifierproduit()"  >valider</button>
+	</div>
+</ng-template>
+
+
+
+ <!--++++++++++++++++++++++
+			Nouveau Produits
+++++++++++++++++++++++++++-->
+
+<ng-template #templateNouveauProduit>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Ajout de produits</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label>nom produit</label>
+				<input type="text" [(ngModel)]="nom"  name="nom" class="form-control">
+
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<label>tva</label>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<select [(ngModel)]="tva" name="tva">
+						<option value="oui">oui</option>
+						<option value="non" selected>non</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>prix session</label>
+				<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>prix de vente</label>
+				<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>quantite</label>
+				<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>peremtion</label>
+				<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
+			</div>
+		</form>
+		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
+		<button class="btn btn-primary btn-sm" (click)="Validernouveauproduit()"  >valider</button>
+	</div>
+</ng-template>
+
+ <!--++++++++++++++++++++++
+		Supprimer Produits
+++++++++++++++++++++++++++-->
+
+<ng-template #templatesupprimerProduit>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Suppresion de produits</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label>nom produit</label>
+				<input type="text" [(ngModel)]="nom"  name="nom" class="form-control">
+
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<label>tva</label>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<select [(ngModel)]="tva" name="tva">
+						<option value="oui">oui</option>
+						<option value="non" selected>non</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>prix session</label>
+				<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>prix de vente</label>
+				<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>quantite</label>
+				<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>peremtion</label>
+				<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
+			</div>
+		</form>
+		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
+		<button class="btn btn-primary btn-sm" (click)="Validernouveauproduit()"  >valider</button>
+	</div>
+</ng-template>
+
+ <!--++++++++++++++++++++++
+		valider tout
+++++++++++++++++++++++++++-->
+
+<ng-template #templatevalidation>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Détails</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="row" [ngStyle]="{with:'96%','margin-left':'2%', 'margin-right':'2%',border:'1px solid green'}">
+			<div class="col-12">
+				 <h3>
+					Suppimer
+				 </h3>
+			</div>
+			<div class="col-12">
+				<div *ngFor="let sup of supprimerProduitsTab;let i=index">
+					<div class="col-9">[ 'Nom:' {{sup.nom}}, 'tva:' {{sup.tva}}, 
+						'Prix Session:' {{sup.prixs}},'Prix de vente:' {{sup.prixv}}, 
+						'Quantité:' {{sup.quantite}} ]
+					</div>
+					<div class="col-4">
+						<button class="btn btn-warning btn-sm" (click)="this.action='supprimer';annulerProduit(i)"  >annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" [ngStyle]="{with:'96%','margin-left':'2%', 'margin-right':'2%','margin-top':'2rem',border:'1px solid green'}">
+			<div class="col-12">
+					<h3>
+					Modifier
+					</h3>
+			</div>
+			<div class="col-12">
+				<div *ngFor="let modif of modifierProduitsTab;let i=index">
+					<div class="col-9">[ 'Nom:' {{modif.nom}}, 'tva:' {{modif.tva}}, 
+						'Prix Session:' {{modif.prixs}},'Prix de vente:' {{modif.prixv}}, 
+						'Quantité:' {{modif.quantite}} ]
+					</div>
+					<div class="col-4">
+						<button class="btn btn-warning btn-sm" (click)="this.action='modifier';annulerProduit(i)"  >annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" [ngStyle]="{with:'96%','margin-left':'2%','margin-right':'2%' ,'margin-top':'2rem',border:'1px solid green'}">
+			<div class="col-12">
+					<h3>
+					Nouveau
+					</h3>
+			</div>
+			<div class="col-12">
+				<div *ngFor="let nouv of nouveauProduisTab;let i=index">
+					<div class="col-9">[ 'Nom:' {{nouv.nom}}, 'tva:' {{nouv.tva}}, 
+						'Prix Session:' {{nouv.prixs}},'Prix de vente:' {{nouv.prixv}}, 
+						'Quantité:' {{nouv.quantite}} ]
+					</div>
+					<div class="col-4">
+						<button class="btn btn-warning btn-sm" (click)="this.action='nouveau';annulerProduit(i)"  >annuler</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" [ngStyle]="{with:'96%','margin-left':'2%','margin-right':'2%' ,'margin-top':'2rem',border:'1px solid green'}">
+				<div class="col-12">
+						<h3>
+						    Reaprovisionner
+						</h3>
+				</div>
+				<div class="col-12">
+					<div *ngFor="let nouv of reaproProduitsTab;let i=index">
+						<div class="col-9">[ 'Nom:' {{nouv.nom}}, 'tva:' {{nouv.tva}}, 
+							'Prix Session:' {{nouv.prixs}},'Prix de vente:' {{nouv.prixv}}, 
+							'Quantité:' {{nouv.quantite}} ]
+						</div>
+						<div class="col-4">
+							<button class="btn btn-warning btn-sm" (click)="this.action='reapro';annulerProduit(i)"  >annuler</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="row" style="text-align:right;">
+			<button class="btn btn-default btn-sm" (click)="reaproProduitsTab=[];supprimerProduitsTab=[];modifierProduitsTab=[];nouveauProduisTab=[];this.modalRef.hide(); this.reinicilized();"  >Annuler Tout</button>
+			<button class="btn btn-primary btn-sm" (click)="toutValider()"  style="margin-left:2rem;">Oui</button>
+		</div>
+
+	</div> 
+</ng-template>
+
+
+ <!--++++++++++++++++++++++
+		Reapro Produits
+++++++++++++++++++++++++++-->
+
+<ng-template #templateReapro>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Ajout de produits</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="form-group">
+				<label>nom produit</label>
+				<input type="text" [(ngModel)]="nom"  name="nom" class="form-control">
+
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-3">
+					<label>tva</label>
+				</div>
+				<div class="col-lg-3 col-md-3">
+					<select [(ngModel)]="tva" name="tva">
+						<option value="oui">oui</option>
+						<option value="non" selected>non</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>prix session</label>
+				<input type="text" [(ngModel)]="prixs" name="prixs" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>prix de vente</label>
+				<input type="text" [(ngModel)]="prixv" name="prixv" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>quantite</label>
+				<input type="text" [(ngModel)]="quantite" name="quantite" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>peremtion</label>
+				<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
+			</div>
+		</form>
+		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
+		<button class="btn btn-primary btn-sm" (click)="Validerreaproproduit()"  >valider</button>
+	</div>
+</ng-template>
+	
+
 </div>
 
-	
+
 
   
 

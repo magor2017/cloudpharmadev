@@ -175,25 +175,19 @@ changerecherche(event){
 
   valider_vente(){
     
-    let params="params="+JSON.stringify({medoc:JSON.stringify(this.medicaments),type:'directe',montant:this.prixtotal()});
+    let params="params="+JSON.stringify({medoc:JSON.stringify(this.medicaments),type:'directe',montant:this.prixtotal(),dependOn:sessionStorage.getItem('dependOn'),idUser:sessionStorage.getItem('idUser'),token:sessionStorage.getItem('token')});
     let link="http://127.0.0.1/allstockBackEnd/index.php/vente/directe";
       this.http.post(link,params,{headers:this.headers}).subscribe(response => {
-     // let data=JSON.parse(response.json());
-      //let data=JSON.parse(response._body);
-     // console.log(response);
-        //if(data.code=="ok"){
-
-      let data=JSON.parse(response.json());
-      //let data=JSON.parse(response._body);
-      console.log(data);
-        if(data.code=="ok"){
+      console.log(response);
+      let data=JSON.parse(response._body);
+        if(data.status==1){
           this.modalRef.hide();
           console.log(response);
           this.medicaments=[];
-         // }
+          }
        }); 
   }
- }
+ 
 // calculePrixTotale (event){
 //      let target = event.target;
 //      let q = target.value;

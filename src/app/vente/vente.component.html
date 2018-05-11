@@ -1,33 +1,19 @@
-  <div class="container">
+<div class="container">
     <div class="row">
          <div class="col-lg-12">
-              <div class="row">
-                  <div class="col-lg-1"></div>
+             <div class="row">
                   <div class="col-lg-10">
-                     <!-- Menu de la section vente -->
                       <div class="row" style="margin-left:150px">
                           <button (click)="changeOnglet('directe')" class="btn col-lg-2 btn-sm" style="margin-right:10px;border:1px solid  green; ;background-color:white; color:green;">Vente</button>
-                          <!--<button (click)="changeOnglet('ipm')" class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">IPM</button>
-                          <button (click)="changeOnglet('bon')" class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">Bon</button>-->
                           <button  (click)="changeOnglet('annulation')"  class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">Historique</button>
-                         <!-- <button    class="btn btn-success col-lg-2 btn-sm" style="margin-right:10px">Historique</button>-->
                       </div> 
                   </div>
-                  <!--<div class="col-lg-1">
-                     <button class="btn btn-danger" [routerLink]="['/login']"><i class="fa fa-power-off"></i>Déconnéction</button>
-                  </div>-->
               </div>
               <div class="row">
-                  <!--<div class="col-lg-3" >
-                      <app-menus [dashboard]="true" [vente]="true" [histoire]="true" [profile]="true"></app-menus>
-                  </div>-->
                   <div class="col-lg-9">
                        <app-directe *ngIf="onglet == 'directe'"></app-directe>
                        <app-annulation *ngIf="onglet == 'annulation'"></app-annulation>
-                      <!-- <app-ipm *ngIf="onglet == 'ipm'"></app-ipm>
-                       <app-bon *ngIf="onglet == 'bon'"></app-bon>
-                       <app-annulation *ngIf="onglet == 'annulation'"></app-annulation>
-                       <router-outlet></router-outlet>-->
+                      <!-- <router-outlet></router-outlet>-->
                   </div>
               </div>
          </div>

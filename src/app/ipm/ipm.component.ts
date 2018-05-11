@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { ClientService } from '../services/client.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-ipm',
@@ -21,7 +22,6 @@ export class IpmassComponent {
    prenom:string;
    nom:string;
    montant:number;
-   
     /*title = 'Super cloudpharma accueil';
     modal:BsModalRef;
     entreprise:string;
@@ -35,12 +35,12 @@ export class IpmassComponent {
     tel:any;*/
   liste:any=[{entreprise:'bbs',adresse:'foire',montant:5000},{entreprise:'afric cloud',adresse:'192.168.1.1',montant:40000}];
   constructor(private router:Router,private modalService: BsModalService,private clientService:ClientService){}
- 
+ //775864920 70000 783023474 10000
   showmodalcaissier(template:any,nb:string){
      this.nb=nb;
      this.modal = this.modalService.show(template);
   }
- 
+ //77734 200000 mouha ba/ibrahima traore 77576 300000
   hidemodalnewipm(){
     this.modal.hide();
   }

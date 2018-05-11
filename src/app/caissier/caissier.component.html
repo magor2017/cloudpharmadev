@@ -1,32 +1,17 @@
-<!--The content below is only a placeholder and can be replaced.-->
-  <!--<h1 style="text-align:center;">
-    Welcome to <b>{{ title }}!</b>
-  </h1>-->
-  
-  <div class="container">
+
+	<div class="row">
+		 <div class="col-lg-1">
+			   <button class="btn btn-danger" [routerLink]="['/login']"><i class="fa fa-power-off"></i>Déconnéction</button>
+		 </div>
+	</div>
+<div class="container">
     <div class="row">
-         <div class="col-lg-3">
-              <div class="row">
-                  <div class="col-lg-1"></div>
-                  <div class="col-lg-10">
-                     <!-- Menu de la section vente -->
-                  </div>
-                  <div class="col-lg-1">
-                     <button class="btn btn-danger" [routerLink]="['/login']"><i class="fa fa-power-off"></i>Déconnéction</button>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-lg-3" >
-                      <app-menus [dashboard]="true" [vente]="true" [histoire]="true" [profile]="true"></app-menus>
-                  </div>
-                  <div class="col-lg-8">
-                     
-                  </div>
-              </div>
-         </div>
-         <div class="col-lg-8">
-			 <router-outlet></router-outlet>
-         </div>
+        <div class="col-lg-3">
+              <app-menus [dashboard]="true" [vente]="true" [histoire]="true" [profile]="true"></app-menus>
+        </div>
+        <div class="col-lg-9">
+              <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 

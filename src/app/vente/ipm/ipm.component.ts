@@ -3,8 +3,6 @@ import { NgModel } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Router } from '@angular/router';
-import { print } from 'util';
-import { parse } from 'url';
 import {NgPipesModule} from 'ngx-pipes';
 
 @Component({

@@ -1,5 +1,5 @@
 <div class="col-lg-12">
-	<button  class="btn btn-success">liste des  caissier</button>
+	<!--<button  class="btn btn-success">liste des  caissier</button>-->
 	<button (click)="showmodalcaissier(template)" class="btn btn-success">nouveau caissier</button>
 					<div>
 						<table class="table table-striped table-condensed table-hover col-lg-8 col-md-8 col-xs-8 col-sm-8">
@@ -13,15 +13,20 @@
 								<td>{{c.prenom}}</td>
 								<td>{{c.nom}}</td>
 								<td>{{c.etat}}</td>
-								<td><button class="btn btn-danger">blocker</button></td>
+								<td>
+									<button *ngIf="c.etat==1" (click)="bloquerCompte(c.idUser,0,c.dependOn)" class="btn btn-danger">Blocker</button>
+									<button *ngIf="c.etat==0" (click)="bloquerCompte(c.idUser,1,c.dependOn)" class="btn btn-success">Activer</button>
+									<button class="btn btn-primery">Modifier</button>
+								</td>
 							</tr>
 						</table> 
 				   </div>
+				   <div *ngIf="newcaissierResponse" class="alert alert-success">Nouveau Caissier Ajouté</div>
 			   
 </div>
 <ng-template #template>
                                                        <div class="modal-header">
-                                                          <h4 class="modal-title pull-left">Modal</h4>
+                                                          <h4 class="modal-title pull-left">Modal Nouveau Caissier</h4>
                                                           <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
                                                             <span aria-hidden="true">&times;</span>
                                                           </button>
@@ -35,23 +40,24 @@
 															   </div>
 															   <div class="form-group">
 																   <label>nom</label>
-																   <input type="text" ngModel name="nom" class="form-control" />
+																   <input type="text" [(ngModel)]="nom" name="nom" class="form-control" />
 															   </div>
 															   <div class="form-group">
 																   <label>telephone</label>
-																   <input type="text" ngModel name="tel" class="form-control" />
+																   <input type="text" [(ngModel)]="tel" name="tel" class="form-control" />
 															   </div>
 															   <div class="form-group">
 																   <label>identifiant</label>
-																   <input type="text" ngModel name="identifiant" class="form-control" />
+																   <input type="text" [(ngModel)]="identifiant" name="identifiant" class="form-control" />
 															   </div>
 															   <div class="form-group">
 																   <label>password</label>
-																   <input type="text" ngModel name="password" class="form-control" />
+																   <input type="text" [(ngModel)]="password" name="password" class="form-control" />
 															   </div>
+															   <div class="alert alert-danger" *ngIf="errorid">Identifiant deja utilisé veuillez choisir un autre</div>
                                                            </form>
                                                            <button class="btn btn-warning btn-sm" (click)="nouveaucaissier()" >valider</button>
-                                                           <button class="btn btn-primary btn-sm" (click)="modal.hide()" >annuler</button>
+                                                           <button class="btn btn-primary btn-sm" (click)="annulation()" >annuler</button>
                                                         </div>
 </ng-template>
 <div bsModal   #modalcaissier="bs-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

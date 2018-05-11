@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import {Http,Headers} from '@angular/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -15,6 +15,8 @@ export class AnnulationComponent implements OnInit {
   modalRef: BsModalRef;
   dateDebut:string;
   dateFin:string;
+  historiquedata:any;
+  totalmontanthistorique:any;
 
   constructor(private http:Http,private modalService: BsModalService) {this.headers.append('Content-Type', 'application/x-www-form-urlencoded'); }
 
@@ -25,6 +27,8 @@ export class AnnulationComponent implements OnInit {
     this.http.post(link,params,{headers:this.headers}).map(res =>res.json()).subscribe(response => {
             this.historique=response.factures;
             this.produits=JSON.parse(response.factures[0].infoSup);
+            this.historiquedata=response.factures;
+            this.calculTotal();
           	console.log(JSON.parse(response.factures[0].infoSup));
        }); 
   }
@@ -40,7 +44,17 @@ export class AnnulationComponent implements OnInit {
             this.historique=response.factures;
             //this.produits=JSON.parse(response.factures[0].infoSup);
           	//console.log(JSON.parse(response.factures[0].infoSup));
-          	console.log(response);
+          	this.historiquedata=response.factures;
+          	this.calculTotal();
+          //	console.log(this.historiquedata);
        }); 
+  }
+  calculTotal(){
+   let montant=0
+    for(let i=0;i<this.historiquedata.length;i++){
+       montant+=parseInt(this.historiquedata[i].montant);
+    }
+    this.totalmontanthistorique=montant;
+    //console.log(this.totalmontanthistorique);
   }
 }

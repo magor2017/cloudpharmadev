@@ -25,7 +25,7 @@ export class StockComponent {
   formmodif:boolean=false;
   peremp:boolean=false;
   bl:boolean=false;
-  produits=[{nom:'mango bakhal',quantite:10,date:'8/12/2018'},{nom:'mafe yape',quantite:25,date:'8/12/2018'},{nom:'soplé',quantite:50,date:'8/12/2018'}];
+  //produits=[{nom:'mango bakhal',quantite:10,date:'8/12/2018'},{nom:'mafe yape',quantite:25,date:'8/12/2018'},{nom:'soplé',quantite:50,date:'8/12/2018'}];
   constructor(private router:Router,private modalService: BsModalService,private stockService:StockService){}
 
 

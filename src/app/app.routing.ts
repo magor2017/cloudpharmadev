@@ -23,7 +23,11 @@ import { DirecteComponent } from './vente/directe/directe.component';
 
 const appRoutes: Routes = [
     { path: '', component: AppComponent },
-    { path: 'caissier', component: CaissierComponent},
+    { path: 'caissier', component: CaissierComponent,
+                  children:[
+                  {path:'vente',component:VenteComponent}
+                  ]
+                },
     { path:'vente',
                     component: VenteComponent,
                     children :[

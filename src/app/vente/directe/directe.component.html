@@ -27,7 +27,7 @@
         </ul>
    </div>
    <div class="row" style="margin-top:1rem; text-align:center; border: 1px solid rgba(255,255,255,0.1);width:55rem;">
-       <table class="table table-bordered table-sm" style="width:40rem;">
+       <table class="table table-bordered table-lg" style="width:100%;">
                <thead>
                <tr>
                    <th>#</th>
@@ -49,27 +49,6 @@
                            <td id="prix" class="{{ medoc.prix}}">{{ medoc.prix}}</td>
                            <td id="quantite" class="{{ medoc.quantite}}">{{ medoc.quantite}}</td>
                            <td>{{medoc.prix*medoc.quantite}}</td>
-                          <!-- <td>
-                               <select class="btn btn-sm" id="sel1" style="font-size:small;" id="typeVente">
-                                   <option>directe</option>
-                                   <option>Bon</option>
-                                   <option>IPM</option>
-                               </select>
-                           </td>
-                           <td>
-                               <select class="btn btn-sm" id="sel1" style="font-size:small;" id="modePayement">
-                                   <option>Payement Cache</option>
-                                   <option>Check</option>>
-                               </select>
-                           </td>
-                           <td>
-                                   <select class="btn btn-sm" id="sel1" style="font-size:small;" id="assurance">
-                                           <option>adama goudiaby</option>
-                                           <option>2</option>
-                                           <option>3</option>
-                                           <option>4</option>
-                                   </select>
-                           </td>-->
                            <td style="text-align:center;"><button (click)="supprimerMedoc(medoc)">supprimer</button></td>
                        </tr>
 

@@ -16,6 +16,7 @@
 												<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="mot de passe"/>
 										</div>
 										<div class="alert alert-danger" *ngIf="error">Identifiant ou mot de pass incorrect</div>
+										<div class="alert alert-danger" *ngIf="comptebloquer">Votre compte est bloqué veuillez contacter votre superviseur</div>
 										<input type="button" (click)="connection()" value="valider" class="btn btn-success" style="border-radius:2rem; float:right;" />
 								</fieldset>
 						</form>

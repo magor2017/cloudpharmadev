@@ -21,6 +21,7 @@ export class DirecteComponent implements OnInit {
 
   changerMotif = null;
   p:string=undefined;
+  qtP:string;
   qt:string=undefined;
   prix:string=undefined;
   idProduit:string=undefined;
@@ -99,8 +100,8 @@ change(){
 }
 
 changerecherche(event){
-     let params="params="+JSON.stringify({produit:(event.target).value});
-    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/recherchproduit";
+     let params="params="+JSON.stringify({produit:(event.target).value,idUser:sessionStorage.getItem('dependOn')});
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/recherchproduit";
     if(((event.target).value).trim() != ''){
     this.http.post(link,params,{headers:this.headers}).map(res =>res.json()).subscribe(response => {
           this.medicamentsSave=response;
@@ -138,11 +139,12 @@ changerecherche(event){
   nouveauMedoc(produit:any){
      //this.medicaments.push(produit);
      this.p=produit.medicament;
+     this.qtP=produit.quantite;
      this.rechercheMedoc = false;
   }
   ajout(){
    console.log(this.isProduit(this.p));
-  if(parseInt(this.qt)>=1 && this.isProduit(this.p)){
+  if(parseInt(this.qt)>=1 && this.isProduit(this.p) && parseInt(this.qt)<=parseInt(this.qtP)){
     let p1={id:1,medicament:this.p,prix:this.prix,quantite:this.qt,idProduit:this.idProduit,idGroup:this.idGroup};
     this.medicaments.push(p1);
     this.rechercheMedoc = false;
@@ -151,6 +153,10 @@ changerecherche(event){
     this.prix=undefined;
     this.idProduit=undefined;
     this.idGroup=undefined;
+    }else{
+       if(parseInt(this.qt)>parseInt(this.qtP)){
+           alert('Quantite insuffisante');
+       }
     }
    
   }
@@ -176,10 +182,10 @@ changerecherche(event){
   valider_vente(){
     
     let params="params="+JSON.stringify({medoc:JSON.stringify(this.medicaments),type:'directe',montant:this.prixtotal(),dependOn:sessionStorage.getItem('dependOn'),idUser:sessionStorage.getItem('idUser'),token:sessionStorage.getItem('token')});
-    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/directe";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/directe";
       this.http.post(link,params,{headers:this.headers}).subscribe(response => {
       console.log(response);
-      let data=JSON.parse(response._body);
+      let data=JSON.parse(response["_body"]);
         if(data.status==1){
           this.modalRef.hide();
           console.log(response);

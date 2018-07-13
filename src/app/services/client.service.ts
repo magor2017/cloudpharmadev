@@ -15,7 +15,7 @@ export class ClientService {
   newClient(data:any,type:string){
     
     let params="params="+JSON.stringify(data);
-    let link="http://127.0.0.1/allstockBackEnd/index.php/client/nouveauclient";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/client/nouveauclient";
    return new Promise( (resolve, reject) => {
     this.http.post(link,params,{headers:this.headers}).subscribe(response =>{
         console.log(response);
@@ -27,7 +27,7 @@ export class ClientService {
   
   bloquerClient(data:any){
     let params="params="+JSON.stringify(data);
-    let link="http://127.0.0.1/allstockBackEnd/index.php/client/bloquerclient";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/client/bloquerclient";
     return new Promise((resolve,reject)=> {
      this.http.post(link,params,{headers:this.headers}).subscribe(response => {
        console.log(response);
@@ -38,7 +38,7 @@ export class ClientService {
  
   modifierClient(data:any){
     let params="params="+JSON.stringify(data);
-    let link="http://127.0.0.1/allstockBackEnd/index.php/client/modifierclient";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/client/modifierclient";
     return new Promise((resolve,reject)=> {
      this.http.post(link,params,{headers:this.headers}).subscribe(response => {
        console.log(response);

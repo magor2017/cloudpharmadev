@@ -17,28 +17,34 @@ export class LoginComponent {
 
   constructor(private router:Router,private http:Http){
          this.headers.append('Content-Type','application/x-www-form-urlencoded');
+        // this.headers.append('Access-Control-Allow-Origin', '*');
+        // this.headers.append('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers');
+        // this.headers.append('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST');
          sessionStorage.removeItem('token');
          sessionStorage.removeItem('idUser');
          sessionStorage.removeItem('dependOn');
          }
+   errorfunction(){
+     this.error=false;
+     this.comptebloquer=false;
+   }
 
   connection(){
     let params="params="+JSON.stringify({ident:this.identifiant,pass:this.password});
-    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/connection";
+   // let link="http://www.cloudpharma.org/backend/connection.php";
+   // let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/connection";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/connection";
     if(this.identifiant!=undefined && this.password.length!=undefined){
     this.http.post(link,params,{headers:this.headers}).subscribe(response =>{
-    //console.log(response);
-       let data=JSON.parse(response._body);
-       //console.log(data);
+      // console.log(response);
+       let data=JSON.parse(response["_body"]);
        if(data.err==1){
-           console.log(data);
            if(data.status.etat=="1"){
            switch(data.status.accesslevel){
              case "1":{
                   sessionStorage.setItem('token',data.token);
                   sessionStorage.setItem('idUser',data.status.idUser);
                   sessionStorage.setItem('dependOn',data.status.dependOn);
-                  console.log(sessionStorage.getItem('token'));
                   this.router.navigate(['/caissier']); 
                   break;
              }
@@ -46,7 +52,6 @@ export class LoginComponent {
                    sessionStorage.setItem('token',data.token);
                    sessionStorage.setItem('idUser',data.status.idUser);
                    sessionStorage.setItem('dependOn',data.status.dependOn);
-                   console.log(sessionStorage.getItem('token'));
                    this.router.navigate(['/assistant']);
                    break;
              }
@@ -62,7 +67,6 @@ export class LoginComponent {
        }
      });
     }
-    //this.router.navigate(['/vente']);
   }
   
 }

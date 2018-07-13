@@ -10,10 +10,10 @@
 								<fieldset>
 										<legend style="text-align:center;color:green;font-size:2em"><img src="./../../assets/login.jpeg" alt="" style="height:5rem; margin-bottom:1rem;"></legend>
 										<div class="form-group">
-												<input name="identifiant" [(ngModel)]="identifiant" type="text" class="form-control" placeholder="identifiant"/>
+												<input name="identifiant" (keyup)="errorfunction()" [(ngModel)]="identifiant" type="text" class="form-control" placeholder="identifiant"/>
 										</div>
 										<div class="form-group">
-												<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="mot de passe"/>
+												<input name="password" (keyup)="errorfunction()" [(ngModel)]="password" type="password" class="form-control" placeholder="mot de passe"/>
 										</div>
 										<div class="alert alert-danger" *ngIf="error">Identifiant ou mot de pass incorrect</div>
 										<div class="alert alert-danger" *ngIf="comptebloquer">Votre compte est bloqué veuillez contacter votre superviseur</div>

@@ -12,11 +12,11 @@
 							<tr *ngFor="let c of caissier">
 								<td>{{c.prenom}}</td>
 								<td>{{c.nom}}</td>
-								<td>{{c.etat}}</td>
+								<td>{{etat(c.etat)}}</td>
 								<td>
 									<button *ngIf="c.etat==1" (click)="bloquerCompte(c.idUser,0,c.dependOn)" class="btn btn-danger">Blocker</button>
 									<button *ngIf="c.etat==0" (click)="bloquerCompte(c.idUser,1,c.dependOn)" class="btn btn-success">Activer</button>
-									<button class="btn btn-primery">Modifier</button>
+									<button class="btn btn-primery" (click)="modalnewpassword(template1,c)">Modifier</button>
 								</td>
 							</tr>
 						</table> 
@@ -58,6 +58,36 @@
                                                            </form>
                                                            <button class="btn btn-warning btn-sm" (click)="nouveaucaissier()" >valider</button>
                                                            <button class="btn btn-primary btn-sm" (click)="annulation()" >annuler</button>
+                                                        </div>
+</ng-template>
+<ng-template #template1>
+                                                       <div class="modal-header">
+                                                          <h4 class="modal-title pull-left">Modal Changement de mot de passe</h4>
+                                                          <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                           <form>
+															   <div class="row">
+															       <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+															           <label>Nouveau Password</label>
+															       </div>
+															       <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+															           <input type="password" name="newpassword" [(ngModel)]="newpassword" />
+															       </div>
+															   </div>
+															   <div class="row">
+															       <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+															           <label>Repeter Password</label>
+															       </div>
+															       <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+															           <input type="password" name="rnewpassword" [(ngModel)]="rnewpassword" />
+															       </div>
+															   </div>
+															   <button (click)="validerupdatepassword()" class="btn btn-success">valider</button>
+                                                           </form>
+                                                          
                                                         </div>
 </ng-template>
 <div bsModal   #modalcaissier="bs-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">

@@ -15,7 +15,7 @@ export class AssistantComponent {
     this.headers.append('Content-Type','application/x-www-form-urlencoded');
   }
   deconnection(){
-   let link="http://127.0.0.1/allstockBackEnd/index.php/vente/deconnection";
+   let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/deconnection";
    let params="params="+JSON.stringify({idUser:sessionStorage.getItem('idUser'),token:sessionStorage.getItem('token')});
    this.http.post(link,params,{headers:this.headers}).subscribe(response =>{
       console.log(response);

@@ -23,7 +23,7 @@ export class AnnulationComponent implements OnInit {
   ngOnInit() {
      //let params="params="+JSON.stringify({produit:(event.target).value});
       let params="params="+"";
-    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/factureHistoryByDay";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/factureHistoryByDay";
     this.http.post(link,params,{headers:this.headers}).map(res =>res.json()).subscribe(response => {
             this.historique=response.factures;
             this.produits=JSON.parse(response.factures[0].infoSup);
@@ -39,7 +39,7 @@ export class AnnulationComponent implements OnInit {
 }
   rechercheInterval(){
      let params="params="+JSON.stringify({debut:this.dateDebut,fin:this.dateFin});
-    let link="http://127.0.0.1/allstockBackEnd/index.php/vente/factureHistoryByInterval";
+    let link="http://www.cloudpharma.org/allstockBackEnd/index.php/vente/factureHistoryByInterval";
     this.http.post(link,params,{headers:this.headers}).map(res =>res.json()).subscribe(response => {
             this.historique=response.factures;
             //this.produits=JSON.parse(response.factures[0].infoSup);

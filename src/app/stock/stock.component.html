@@ -1,182 +1,275 @@
-<div>
-	<button class="btn btn-success" (click)="showmodalcaissier(template)" >nouveau produit</button>
-	<button class="btn btn-success" (click)="listeproduit()" >liste des produits</button>
-	<button class="btn btn-success" (click)="perempt()" >peremption</button>
-	<button class="btn btn-success"  (click)="showmodalcaissier(templatemodif)">modifier produit</button>
-	<button class="btn btn-success" (click)="affichebl()">reapprovisionement</button>
-	<button class="btn btn-success" >reappro</button>
-</div>
-<div>
-	<div *ngIf="listproduit">
-		<div class="row" style="margin:10px">
-			<select>
-				<option>--rayon--</option>
-				<option>r1</option>
-				<option>r2</option>
-				<option>r3</option>
-			</select>
-<!--<div class="row">
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='nouveau produit')?true:false)}" (click)="section='nouveau produit'" >nouveau produit</button> 
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='liste des produits')?true:false)}" [ngStyle]="{'margin-left': '0.7rem'}" (click)="section='liste des produits'" >liste des produits</button>
-	<button [ngClass]="{btn:true,'btn-sm':true, 'btn-success':true, activeMenu: ((section==='reaprovisionnement')?true:false)}"[ngStyle]="{'margin-left': '0.7rem'}"  (click)="section='reaprovisionnement'">reappro</button> 
-</div>
-<div class="row" [ngStyle]="{'min-height': '-webkit-fill-available'}">
-
-	<div class="col-lg-12" *ngIf="section==='nouveau produit'" style="margin-top:2rem;">
-		<div class="row" [ngStyle]="{'margin-top': '2rem','text-align': 'center'}">
-			<div class="col-lg-4">
+<!--<div class="panel panel-default">
+	 <div class="panel-heading">
+            <h2 style="text-align:center;color:green">Gestion Du Stock</h2>
+     </div>
+	<div class="panel-body">
+		<div id="om-options">
+		    <a href="#np" style="padding-left: 4rem; padding-right: 4rem;" data-toggle="tab">nouveau produit</a>
+		    <a href="#lp" style="padding-left: 4rem; padding-right: 4rem;" data-toggle="tab">liste produit</a>
+		    <a href="#rp" style="padding-left: 4rem; padding-right: 4rem;" data-toggle="tab">reapprovisionnement</a>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane fade" id="np" >
 				
 			</div>
-			<div class="col-lg-2">
-<<<<<<< HEAD
-				<button [ngClass]="{btn:true,'btn-sm':true,'btn-success':true,activeMenu:true}" class="btn btn-success" (click)="showmodalcaissier(template)" >nouveau produit</button>
-			</div>-->
-
-				<button [ngClass]="{btn:true,'btn-sm':true,'btn-success':true,activeMenu:true}" class="btn btn-success" (click)="this.reinicilized(); openModal(templateNouveauProduit);" >nouveau produit</button>
+			<div class="tab-pane fade" id="lp">
+				<p>liste produit</p>
 			</div>
-
-		</div>
-		<div class="row" [ngStyle]="{'margin-top': '2rem'}">
-			<table class="table table-sm">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>TVA</th>
-						<th>prix session</th>
-						<th>prix vente</th>
-						<th>Quantite</th>
-						<th>Peremption</th>
-						<th>annuler</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let prod of nouveauProduisTab; let i=index" >
-						<td>{{prod.nom}}</td>
-						<td>{{prod.tva}}</td>
-						<td>{{prod.prixSession}}</td>
-						<td>{{prod.prixVente}}</td>
-						<td>{{prod.quantite}}</td>
-						<td>{{prod.peremption}}</td>
-						<td>
-							<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="this.action='nouveau';annulerProduit(i)">annuler</button>
-						</td>
-
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
-   	</div>
-
-	<div class="col-lg-12" *ngIf="section==='liste des produits'">
-		<div >
-			<table class="table table-striped table-condensed table-sm" [ngStyle]="{'margin-top':'2rem'}">
-				<tr>
-					<th>produit</th>
-					<th>quantite</th>
-					<th>date peremption</th>
-					<th>Modifier</th>
-					<th>Supprimer</th>
-				</tr>
-				<tr *ngFor="let produit of listeDesProduitsTab; let i=index">
-					<td>{{produit.nom}}</td>
-					<td>{{produit.quantite}}</td>
-					<td>{{produit.date}}</td>
-					<td>
-						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i); openModal(templatemodifierPorduit)">Modifier</button>
-					</td>
-					<td>
-						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i);openModal(templatesupprimerProduit);">Supprimer</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
-	</div>
-
-		</div>
-	</div>
-	<div *ngIf="bl">
-		<div class="row" style="margin:10px">
-			<div  class="col-lg-offset-2 col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="Nouveau BL" />
-			</div>
-			<div style="margin-left:20px" class="col-lg-2 col-md-2">
-			 <input type="button" class="btn btn-primary" value="Recherche BL" />
-	
-
-	<div class="col-lg-12" *ngIf="section==='reaprovisionnement'">
-		<div class="row">
-			<form class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-4">
-						<label>Fournisseur</label>
-						<input type="text" [(ngModel)]="founisseur"  name="founisseur" class="form-control">		
-					</div>
-					<div class="col-lg-4">
-						<label>Code Bl</label>
-						<input type="text" [(ngModel)]="bl" name="prixs" class="form-control">		
-					</div>
-					<div class="col-lg-4">
-						<label>peremtion</label>
-						<input type="text" [(ngModel)]="date" name="date" class="form-control">		
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="row">
-			<table class="table table-striped table-condensed table-sm" [ngStyle]="{'margin-top':'2rem'}">
-				<tr>
-					<th>produit</th>
-					<th>quantite</th>
-					<th>date peremption</th>
-					<th>Reaprovisionner</th>
-				</tr>
-				<tr *ngFor="let produit of listeDesProduitsTab; let i=index">
-					<td>{{produit.nom}}</td>
-					<td>{{produit.quantite}}</td>
-					<td>{{produit.date}}</td>
-					<td>
-						<button [ngClass]="{btn:true,'btn-success':true, 'btn-sm':true}" (click)="modifierroduit(i); openModal(templateReapro)">reapro</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-
-	</div>
-	
-	<div class="col-lg-12" *ngIf="section==='bl'">
-		<div>
-			<div class="row" [ngStyle]="{'margin-top':'2rem'}">
-				<div  class="col-lg-offset-2 col-lg-2 col-md-2">
-					<input type="button" class="btn btn-primary" value="reapro" />
-				</div>
-				<div (ngStyle]="{'margin-left':'20px'}" [ngClass]="{'col-lg-2':true, 'col-md-2':true}">
-					<input type="button" class="btn btn-primary" value="rechercher bl" />
-				</div>
+			<div class="tab-pane fade" id="rp">
+				<p>reapprovisionnement</p>
 			</div>
 		</div>
-		<div>
-			<form class="form-inline">
-				<label >Fournisseur</label>
-				<select style="margin-left:2em;margin-right:2em">
-					<option>bbs</option>
-					<option>cloudpharma</option>
-					<option>rastapharm</option>
-				</select>
-				<label>Code BL</label>
-				<input type="text" />
-			</form>
-		</div>
-
-		<button [ngClass]="{btn:true,'btn-sm':true,'btn-warning':true,activeMenu:true}" [ngStyle]="{position: 'absolute', right: '1rem', bottom:'7rem'}" (click)="openModal(templatevalidation)" >Valider Tout</button>
-
 	</div>
-
-	<!-- Routing tags -->
-	<router-outlet></router-outlet>
+</div>-->
+<div>
+    <a class="lien" (click)="affiche_np()" >Nouveau Produit</a>
+    <a class="lien" (click)="affiche_mp()" >Modifier Produit</a>
+    <a  class="lien" (click)="affiche_lp()" >Liste Produit</a>
+    <a  class="lien" (click)="affiche_rp()" >Reapprovisionnement</a>
 </div>
-<div class="row">
+<div style="margin-top:2em">
+	 <div *ngIf="np" id="np" class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+		 <form class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+		     <fieldset>
+                 <legend>Nouveau Produit</legend>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-xs-4">
+						 <label >Nom Produit</label>
+					 </div>
+                     <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						 <input class="inputcloud" [(ngModel)]="nom" name="nom" type="text"  />
+                     </div>
+                    
+                 </div>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						  <label>Quantite</label>
+					 </div>
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						 <input class="inputcloud" [(ngModel)]="quantite" name="quantite"  type="number"  />
+					 </div>
+                    
+                 </div>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						 <label>Prix Achat</label>
+					 </div>
+                     <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+						 <input class="inputcloud" [(ngModel)]="prixs" name="prixs" type="number"  />
+                     </div>
+                    
+                 </div>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						 <label>Prix Vente</label>
+					 </div>
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						 <input class="inputcloud" [(ngModel)]="prixv" name="prixv"  type="number"  />
+					 </div>
+                 </div>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						  <label>tva</label>
+					 </div>
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						 <select [(ngModel)]="tva" name="tva"  class="inputcloud">
+						   <option>non</option>
+						   <option>oui</option>
+					     </select>
+					 </div>
+                 </div>
+                 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						  <label>Peremption</label>
+					 </div>
+					 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						 <input [(ngModel)]="peremption" name="peremption"  class="inputcloud" type="text" />
+					 </div>
+					 
+                 </div>
+                 <button (click)="openModal(templateNouveauProduit)" class="btn btn-success">enregistrer</button>
+                 <button class="btn btn-danger">annuler</button>
+		     </fieldset>
+		 </form>
+	 </div>
+	 <div *ngIf="mp">
+		 <form>
+			 <div class="row" style="width:80%">
+			   <input style="width:80%" autocomplete="off" (keyup)="changerecherche($event)" class="inputcloud" type="text" name="pchoisi" placeholder="veuillez choisir le produit a modifier" [(ngModel)]="pchoisi" />
+		     </div>
+		     <div style="width:80%" class="row" *ngIf="rechercheMedoc == true">
+				<ul style="background-color:green; z-index:2;" class="col-lg-11">
+					<li  *ngFor="let medoc of  medicamentsSave | filterBy: ['medicament']: changerMotif " ><a style="color:white;cursor:pointer;" (click)="produitCh(medoc)" id=' "medicament": "{{ medoc.medicament }}" ,"prix": "{{ medoc.prix }}"  , "quantite" : "{{ medoc.quantite }}" ,"modePayement" : "{{ medoc.modePayement }}", "assurance": "{{ medoc.assurance }}", "type": "{{ medoc.type }}" '>{{ medoc.medicament }}</a></li>
+				</ul>
+             </div>
+		 </form>
+		 <form style="margin-top:2em">
+		     <div class="row">
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <label>nom produit</label>
+				 </div>
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <input class="inputcloud" type="text" name="nom" [(ngModel)]="nom" />
+				 </div>
+		     </div>
+		     <div class="row">
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <label>Prix Achat</label>
+				 </div>
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <input class="inputcloud" class="inputcloud" type="number" name="prixs" [(ngModel)]="prixs"  />
+				 </div>
+		     </div>
+		     <div class="row">
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <label>Prix Vente</label>
+				 </div>
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <input class="inputcloud" type="text" name="prixv" [(ngModel)]="prixv" />
+				 </div>
+		     </div>
+		     <div class="row">
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <label>tva</label>
+				 </div>
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <select class="inputcloud" name="tva" [(ngModel)]="tva">
+						 <option value="1">oui</option>
+						 <option value="0">non</option>
+					 </select>
+				 </div>
+		     </div>
+		     <div class="row">
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <label>Peremption</label>
+				 </div>
+				 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+					 <input class="inputcloud" placeholder="ex:jour/moi/annee" type="text" name="peremption" [(ngModel)]="peremption" />
+				 </div>
+		     </div>
+		     <p class="alert alert-success" *ngIf="reponseupdate">Produit modifié</p>
+		     <button (click)="updateProduit()" class="btn btn-success">modifier</button>
+		     <button class="btn btn-danger">annuler</button>
+		 </form>
+	 </div>
+	 <div *ngIf="lp" id="np">
+		 <table class="table table-striped table-condensed">
+			 <tr>
+				 <td>Produit</td>
+				 <td>Quantite</td>
+				 <td>Prix Achat</td>
+				 <td>Prix Vente</td>
+				 <td>Peremption</td>
+			 </tr>
+			 <tr *ngFor="let p of tabProduit">
+				 <td>{{p.nomProduit}}</td>
+				 <td>{{p.quantite}}</td>
+				 <td>{{p.prixAchat}}</td>
+				 <td>{{p.prixVente}}</td>
+				 <td>{{p.datePreremption}}</td>
+			 </tr>
+		 </table>
+	 </div>
+	 <div *ngIf="rp">
+		 <div style="width:80%;margin-left:auto;margin-rigth:auto">
+		      <a (click)="affiche_enrbl()" class="lien">Enregistrer</a>
+		      <a (click)="affiche_rbl()" class="lien">Rechercher</a>
+		 </div>
+		 <div>
+			 <div *ngIf="enrbl" >
+				 <form class="form-inline">
+					 <label>Code facture</label>
+					 <input style="border-radius:10px 10px 10px 10px" type="text" [(ngModel)]="code" name="code" />
+					 <label>Fournisseur</label>
+					 <select style="border-radius:10px 10px 10px 10px" [(ngModel)]="fournisseur" name="fournisseur">
+						 <option value="1/DUOPHARM">DUOPHARM</option>
+						 <option value="2/UBIPHARM">UBIPHARM</option>
+						 <option value="3/COPHASE">COPHASE</option>
+						 <option value="4/EURAPHARMA">EURAPHARMA</option>
+						 <option value="5/LABOREX">LABOREX</option>
+						 <option value="6/DUOPHARM">DUOPHARM</option>
+						 <option value="7/AUTRE">AUTRE</option>
+						 
+					 </select>
+					 <label>date de livraison</label>
+					 <input style="border-radius:10px 10px 10px 10px"  type="text" [(ngModel)]="date" name="date"  />
+				 </form>
+				 <div class="row" style="margin-top:2rem; border:1px solid green; padding: 2rem; border-radius:2rem;">
+    <div class="col-lg-12" style="text-alig:center;">
+          <div class="row">
+               <div class="col-lg-4">
+
+               </div>
+               <div class="col-lg-4">
+                    <h1 onloadedmetadata=""style="margin-top:0rem;border:2px solid green; color: green; text-align:center;  border-radius:2rem;"><B>Produits</B></h1>
+               </div>
+          </div>
+    </div>
+   <!-- <div class="input-group input-group-sm sort row">-->
+    <div  class="row">
+		   <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+			     <div class="row">
+			       <input class="inputcloud" type="text" class="form-control input-sm" name="p" [(ngModel)]="p" placeholder="rechercher d'un produit..." (keyup)="changerecherche($event)">
+			     </div>
+			     <div style="border-radius:10px 10px 10px 10px" class="row" *ngIf="rechercheMedoc == true">
+					<ul style="background-color:green; z-index:2;" class="col-lg-11">
+						<li  *ngFor="let medoc of  medicamentsSave | filterBy: ['medicament']: changerMotif " ><a style="color:white;cursor:pointer;" (click)="nouveauMedoc(medoc)" id=' "medicament": "{{ medoc.medicament }}" ,"prix": "{{ medoc.prix }}"  , "quantite" : "{{ medoc.quantite }}" ,"modePayement" : "{{ medoc.modePayement }}", "assurance": "{{ medoc.assurance }}", "type": "{{ medoc.type }}" '>{{ medoc.medicament }}</a></li>
+					</ul>
+                 </div>
+		   </div>
+           <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2">
+			   <input class="inputcloud" type="text" [(ngModel)]="qt" name="qt" class="form-control input-sm" />
+           </div>
+           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			   <input class="inputcloud" type="text" placeholder="peremption ex:jour/moi/annee" name="peremption" [(ngModel)]="peremption" />
+           </div>
+           <div class="col-lg-offset-11 col-md-offset-11 col-sm-offset-11 col-xs-offset-11 col-lg-1 col-md-1 col-xs-1 col-sm-1">
+               <button class="btn btn-secondary btn-sm" (click)="ajout()" >Go!</button>
+           </div>
+    </div>
+   <!-- aurocomplet -->
+   <div class="row" style="margin-top:1rem; text-align:center; border: 1px solid rgba(255,255,255,0.1);width:55rem;">
+       <table class="table table-bordered table-lg" style="width:100%;">
+               <thead>
+               <tr>
+                   <th>#</th>
+                   <th>Produits</th>
+                   <!--<th>Prix</th>-->
+                   <th>Quantite</th>
+                   <!--<th>Prix total</th>-->
+               </tr>
+               </thead>
+               <tbody #bodyTable>
+
+                       <tr *ngFor="let medoc of medicaments;let i=index">
+                           <th scope="row" id="num" class="{{ medoc.id}}">{{ i+1}}</th>
+                           <td id="medicament" class="{{ medoc.medicament}}">{{ medoc.medicament}}</td>
+                          <!-- <td id="prix" class="{{ medoc.prix}}">{{ medoc.prix}}</td>-->
+                           <td id="quantite" class="{{ medoc.quantite}}">{{ medoc.quantite}}</td>
+                          <!-- <td>{{medoc.prix*medoc.quantite}}</td>-->
+                           <td style="text-align:center;"><button (click)="supprimerMedoc(medoc)">supprimer</button></td>
+                       </tr>
+
+              
+        
+                   <tr>
+                       <!--<td>
+						   Total : {{prixtotal()}}
+                       </td>-->
+                       <td colspan="2">
+                            <button class="btn btn-success btn-sm" (click)="validerbl()" style="width:100%;">Valider</button>
+                       </td>
+                   </tr>
+                 </tbody>  
+           </table>
+   </div>
+			 </div>
+			 <div *ngIf="rbl" >
+				 <p>recherche bl ici</p>
+			 </div>
+		 </div>
+	 </div>
+</div>
 
 <!-- ......................................................................
 							Modals
@@ -185,7 +278,7 @@
  <!--++++++++++++++++++++++
 			Modifier Produits
 ++++++++++++++++++++++++++-->
-<ng-template #templatemodifierPorduit>
+<!--<ng-template #templatemodifierPorduit>
 	<div class="modal-header">
 		<h4 class="modal-title pull-left">Modification de produits</h4>
 		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -232,7 +325,7 @@
 	</div>
 </ng-template>
 
-
+-->
 
  <!--++++++++++++++++++++++
 			Nouveau Produits
@@ -280,6 +373,7 @@
 				<input type="text" [(ngModel)]="peremption" name="peremption" class="form-control">
 			</div>
 		</form>
+		<p *ngIf="existeproduit" class="alert alert-danger">produit deja enregistré</p>
 		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
 		<button class="btn btn-primary btn-sm" (click)="Validernouveauproduit()"  >valider</button>
 	</div>
@@ -288,7 +382,7 @@
  <!--++++++++++++++++++++++
 		Supprimer Produits
 ++++++++++++++++++++++++++-->
-
+<!--
 <ng-template #templatesupprimerProduit>
 	<div class="modal-header">
 		<h4 class="modal-title pull-left">Suppresion de produits</h4>
@@ -334,12 +428,12 @@
 		<button class="btn btn-warning btn-sm" (click)="this.modalRef.hide(); this.reinicilized();"  >annuler</button>
 		<button class="btn btn-primary btn-sm" (click)="Validernouveauproduit()"  >valider</button>
 	</div>
-</ng-template>
+</ng-template>-->
 
  <!--++++++++++++++++++++++
 		valider tout
 ++++++++++++++++++++++++++-->
-
+<!--
 <ng-template #templatevalidation>
 	<div class="modal-header">
 		<h4 class="modal-title pull-left">Détails</h4>
@@ -426,13 +520,13 @@
 		</div>
 
 	</div> 
-</ng-template>
+</ng-template>-->
 
 
  <!--++++++++++++++++++++++
 		Reapro Produits
 ++++++++++++++++++++++++++-->
-
+<!--
 <ng-template #templateReapro>
 	<div class="modal-header">
 		<h4 class="modal-title pull-left">Ajout de produits</h4>
@@ -481,7 +575,7 @@
 </ng-template>
 	
 
-</div>
+-->
 
 
 
